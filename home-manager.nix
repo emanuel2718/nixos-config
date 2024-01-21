@@ -34,8 +34,9 @@
     vscode
   ];
 
-
   home.file.".vimrc".text = builtins.readFile ./.config/.vimrc;
+  home.file.".xprofile".text = builtins.readFile ./.config/.xprofile;
+  
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ./.config/i3config;

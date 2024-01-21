@@ -43,25 +43,16 @@
     LC_TIME = "es_PR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable the XFCE Desktop Environment.
-  # services.xserver.displayManager.lightdm.enable = true;
-  # services.xserver.desktopManager.xfce.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     enable = true;
     layout = "us";
     xkbVariant = "";
+    autoRepeatDelay = 170;
+    autoRepeatInterval = 90;
     displayManager = {
-      # defaultSession = "none+i3"
-      defaultSession = "xfce+i3";
-      lightdm.enable = true;
-      sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 180 85
-      '';
+      defaultSession = "none+i3";
     };
     desktopManager = {
       xfce = {
@@ -92,6 +83,7 @@
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
+
     #media-session.enable = true;
   };
 
@@ -103,7 +95,7 @@
     isNormalUser = true;
     description = "rami";
     extraGroups = [ "networkmanager" "wheel" ];
-    # shell = pkgs.fish;
+    shell = pkgs.fish;
     #packages = with pkgs; [
     #  firefox
     #  thunderbird
