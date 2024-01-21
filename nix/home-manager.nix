@@ -42,7 +42,6 @@
       neofetch
       ranger
       ripgrep
-      rofi
       rsync
       unzip
       vscode
