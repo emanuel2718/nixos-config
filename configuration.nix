@@ -103,7 +103,7 @@
     isNormalUser = true;
     description = "rami";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
     #packages = with pkgs; [
     #  firefox
     #  thunderbird

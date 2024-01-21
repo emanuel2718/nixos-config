@@ -6,11 +6,18 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+      
+
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [
+        inputs.neovim-nightly-overlay.overlay
+      ];
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; overlays = overlays; };
     in {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -20,7 +27,7 @@
       };
       homeConfigurations = {
         rami = home-manager.lib.homeManagerConfiguration {
-	  inherit pkgs;
+	        inherit pkgs;
           modules = [ ./home-manager.nix ];
         };
       };

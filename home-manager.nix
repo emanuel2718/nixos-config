@@ -12,25 +12,26 @@
 
   xdg.enable = true;
 
-  home.packages = [
-    pkgs.htop
-    pkgs.neofetch
-    pkgs.fzf
-    pkgs.chromium
-    pkgs.gh
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.gopls
-    pkgs.nodejs
-    pkgs.zathura
-    pkgs.rofi
-    pkgs.maim
-    pkgs.xclip
-    pkgs.wezterm
-    pkgs.rustup
-    pkgs.httpie
-    pkgs.zoxide
-    pkgs.starship
+  home.packages = with pkgs; [
+    htop
+    neofetch
+    fzf
+    chromium
+    gh
+    jq
+    ripgrep
+    gopls
+    nodejs
+    zathura
+    rofi
+    maim
+    xclip
+    wezterm
+    rustup
+    httpie
+    zoxide
+    starship
+    vscode
   ];
 
 
@@ -43,6 +44,13 @@
   };
 
   programs.zoxide.enable = true;
+
+  programs.vscode = {
+   enable = true;
+   extensions = with pkgs.vscode-extensions; [
+     vscodevim.vim
+   ];
+  };
 
   programs.starship = {
     enable = true;
@@ -101,6 +109,12 @@
     #  key = "";
     #  signByDefault = true;
     #};
+  };
+
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
   };
 
 
