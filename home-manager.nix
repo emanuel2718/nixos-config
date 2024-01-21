@@ -66,6 +66,9 @@
         success_symbol = "[➜](bold green)";
         error_symbol = "[➜](bold red)";
       };
+      git_status = {
+        disabled = true;
+      };
     };
   };
 
