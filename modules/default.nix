@@ -1,8 +1,9 @@
 { ... }:
 {
   imports = 
-    [(import ../modules/config/fish)]
-    ++ [(import ../modules/config/git)]
-    ++ [(import ../modules/config/starship)]
-    ++ [(import ../modules/config/nvim)];
+    [(import ../modules/fish)]
+    ++ [(import ../modules/git)]
+    ++ [(import ../modules/starship)]
+    ++ [(import ../modules/vscode)]
+    ++ [(import ../modules/nvim)];
 }
