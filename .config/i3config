@@ -235,8 +235,8 @@ bindsym $mod+Tab workspace back_and_forth
 
 
 # Full screen  -> Save
-bindsym $mod+y exec --no-startup-id maim "$HOME/Pictures/Screenshots/$(date)"
-bindsym Ctrl+$mod+y exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/Screenshots/$(date)"
+bindsym $mod+y exec --no-startup-id maim "$HOME/Pictures/Screenshots/$(date).jpg"
+bindsym Ctrl+$mod+y exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/Screenshots/$(date).jpg"
 
 # Selection -> Clipboard
 bindsym $mod+Shift+y exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
