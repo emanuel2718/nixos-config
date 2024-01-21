@@ -103,10 +103,11 @@
     isNormalUser = true;
     description = "rami";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
+    shell = pkgs.fish;
+    #packages = with pkgs; [
+    #  firefox
     #  thunderbird
-    ];
+    # ];
   };
 
   # Allow unfree packages
@@ -128,6 +129,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.fish.enable = true;
 
   # List services that you want to enable:
 
