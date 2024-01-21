@@ -29,11 +29,13 @@
   ];
 
 
+  home.file.".vimrc".text = builtins.readFile ./.config/.vimrc;
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ./.config/i3config;
     "i3status/config".text = builtins.readFile ./.config/i3status;
     "wezterm/wezterm.lua".text = builtins.readFile ./.config/wezterm.lua;
+
   };
 
 
