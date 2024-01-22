@@ -1,0 +1,8 @@
+.git
+.settings
+.vscode
+__pycache__/
+env
+node_modules
+target/
+.cache

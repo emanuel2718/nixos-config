@@ -47,7 +47,20 @@
       vscode
       wezterm
       xclip
+      valgrind
       zathura
+      gnumake
+      zig
+      gcc
+      nodejs
+
+      nodePackages_latest.pyright
+      cmake-language-server
+      nil
+      rust-analyzer
+      nodePackages.vim-language-server
+      lua-language-server
+      buf-language-server
     ];
   };
 

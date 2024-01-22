@@ -1,17 +1,52 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
+  # xdg.configFile."nvim" = { source = ./config; recursive = true; };
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly.overrideAttrs (_: { CFLAGS = "-O3"; });
-    plugins = [
+    extraLuaConfig = ''
+      ${builtins.readFile lua/core/options.lua}
+      ${builtins.readFile lua/core/keymaps.lua}
+      ${builtins.readFile lua/core/autocmds.lua}
+    '';
+    plugins = with pkgs; [
       # Telescope
+      vimPlugins.plenary-nvim
+      vimPlugins.telescope-fzf-native-nvim
       {
-        plugin = pkgs.vimPlugins.telescope-nvim;
-        config = builtins.readFile config/plugins/telescope.lua;
+        plugin = vimPlugins.telescope-nvim;
+        config = builtins.readFile lua/plugins/telescope.lua;
         type = "lua";
       }
-      pkgs.vimPlugins.plenary-nvim
-      pkgs.vimPlugins.telescope-fzf-native-nvim
+
+      # Formatter
+      vimPlugins.conform-nvim
+
+      # LSP
+      vimPlugins.neodev-nvim
+      vimPlugins.fzf-lua
+      {
+        plugin = vimPlugins.nvim-lspconfig;
+        config = builtins.readFile lua/plugins/lspconfig.lua;
+        type = "lua";
+      }
+
+      # cmp
+      vimPlugins.cmp-buffer
+      vimPlugins.cmp-path
+      vimPlugins.cmp-nvim-lua
+      vimPlugins.cmp-nvim-lsp
+      vimPlugins.lspkind-nvim
+      vimPlugins.cmp-cmdline
+      vimPlugins.luasnip
+      vimPlugins.cmp_luasnip
+      {
+        plugin = vimPlugins.nvim-cmp;
+        config = builtins.readFile lua/plugins/cmp.lua;
+        type = "lua";
+      }
+
+      pkgs.vimPlugins.rustaceanvim
     ];
   };
 }
