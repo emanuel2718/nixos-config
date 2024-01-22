@@ -25,6 +25,7 @@
       # LSP
       vimPlugins.neodev-nvim
       vimPlugins.fzf-lua
+      pkgs.vimPlugins.rustaceanvim
       {
         plugin = vimPlugins.nvim-lspconfig;
         config = builtins.readFile lua/plugins/lspconfig.lua;
@@ -46,7 +47,37 @@
         type = "lua";
       }
 
-      pkgs.vimPlugins.rustaceanvim
+
+      ## Treesitter
+      vimPlugins.nvim-treesitter.withAllGrammars
+      vimPlugins.nvim-treesitter-textobjects
+      {
+        plugin = vimPlugins.nvim-treesitter;
+        config = builtins.readFile lua/plugins/treesitter.lua;
+        type = "lua";
+      }
+
+      # Neogit
+      vimPlugins.diffview-nvim
+      {
+        plugin = vimPlugins.neogit;
+        config = ''
+          vim.keymap.set('n', '<leader>g.', '<cmd>Neogit<cr>', { noremap = true, silent = true })
+          require('neogit').setup({
+            integrations = { diffview = true, fzf_lua = true }
+          })
+        '';
+        type = "lua";
+      }
+      # Oil
+      vimPlugins.nvim-web-devicons
+      {
+        plugin = vimPlugins.oil-nvim;
+        config = builtins.readFile lua/plugins/oil.lua;
+        type = "lua";
+      }
+
+
     ];
   };
 }
