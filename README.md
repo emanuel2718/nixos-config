@@ -17,3 +17,7 @@ cd $HOME/.dotfiles
 sudo nixos-rebuild switch --flake .#<M>
 sudo reboot now
 ```
+
+
+## TODO
+- [ ] fully port Nvim config to nix (currently 50/50 lua/nix)

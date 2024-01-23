@@ -1,5 +1,18 @@
 { pkgs, lib, ... }:
-{
+let
+  gitClone = repo: ref: sha:
+    pkgs.vimUtils.buildVimPlugin {
+      pname = "${lib.strings.sanitizeDerivationName repo}";
+      version = ref;
+      src = builtins.fetchGit {
+        url = "http://github.com/${repo}.git";
+        ref = ref;
+        rev = sha;
+      };
+    };
+in {
+  
+
   # xdg.configFile."nvim" = { source = ./config; recursive = true; };
   programs.neovim = {
     enable = true;
@@ -69,6 +82,7 @@
         '';
         type = "lua";
       }
+
       # Oil
       vimPlugins.nvim-web-devicons
       {
@@ -77,7 +91,83 @@
         type = "lua";
       }
 
+      # Fidget
+      vimPlugins.fidget-nvim
 
+      # Comment
+      {
+        plugin = vimPlugins.comment-nvim;
+        config = "require('Comment').setup()";
+        type = "lua";
+      }
+
+      # Autopairs
+      {
+        plugin = vimPlugins.nvim-autopairs;
+        config = builtins.readFile lua/plugins/autopairs.lua;
+        type = "lua";
+      }
+
+      # Colorizer
+      {
+        plugin = vimPlugins.nvim-colorizer-lua;
+        config = ''
+            require("colorizer").setup {
+              filetypes = {
+                "typescript",
+                "typescriptreact",
+                "javascript",
+                "javascriptreact",
+                "css",
+                "html",
+                "astro",
+                "lua",
+              },
+              user_default_options = {
+                names = false,
+                rgb_fn = true,
+                hsl_fn = true,
+                tailwind = "both",
+              },
+              buftypes = {},
+            }
+        '';
+        type = "lua";
+      }
+
+
+      # Terminal
+
+      {
+        plugin = vimPlugins.FTerm-nvim;
+        config = ''
+          vim.keymap.set('n', '<C-T>', '<CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
+          vim.keymap.set('t', '<C-T>', '<CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
+          require("FTerm").setup({
+            border = "solid",
+            blend = 10,
+          })
+        '';
+        type = "lua";
+      }
+
+      # Trouble
+      {
+        plugin = vimPlugins.trouble-nvim;
+        config = ''
+          local map = vim.keymap.set
+          map("n", "<leader>d.", function() require("trouble").toggle("document_diagnostics") end, { noremap = true, silent = true }) 
+        '';
+        type = "lua";
+      }
+
+
+      # Toggle LSP Diagnostics
+      {
+        plugin = gitClone "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" "main" "4fbfb51e3902d17613be0bc03035ce26b9a8d05d";
+        config = builtins.readFile lua/plugins/toggle-diagnostics.lua;
+        type = "lua";
+      }
     ];
   };
 }
