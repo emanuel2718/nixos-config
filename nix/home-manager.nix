@@ -19,7 +19,7 @@
     "i3/config".text = builtins.readFile ../modules/config/i3config;
     "i3status/config".text = builtins.readFile ../modules/config/i3status;
     "wezterm/wezterm.lua".text = builtins.readFile ../modules/config/wezterm.lua;
-    "fish/functions/fish_user_key_bindings.fish".text = builtins.readFile ../modules/config/fish/fish_user_key_bindings.fish;
+    "fish/functions/fish_user_key_bindings.fish".text = builtins.readFile ../modules/fish/fish_user_key_bindings.fish;
   };
 
 
@@ -42,13 +42,25 @@
       neofetch
       ranger
       ripgrep
-      rofi
       rsync
       unzip
       vscode
       wezterm
       xclip
+      valgrind
       zathura
+      gnumake
+      zig
+      gcc
+      nodejs
+
+      nodePackages_latest.pyright
+      cmake-language-server
+      nil
+      rust-analyzer
+      nodePackages.vim-language-server
+      lua-language-server
+      buf-language-server
     ];
   };
 
