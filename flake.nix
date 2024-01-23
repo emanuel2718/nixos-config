@@ -23,7 +23,7 @@
     user = "rami";
   in {
     nixosConfigurations = (
-      import ./machines {
+      import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager user neovim-nightly-overlay;
       }
