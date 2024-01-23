@@ -40,6 +40,7 @@
       maim
       mpv
       neofetch
+      fastfetch
       ranger
       ripgrep
       rsync

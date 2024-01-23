@@ -28,11 +28,6 @@
         inherit inputs nixpkgs home-manager user neovim-nightly-overlay;
       }
     );
-    # homeConfigurations = {
-    #   rami = home-manager.lib.homeManagerConfiguration {
-    #     modules = [ ./nix/home-manager.nix ];
-    #   };
-    # };
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
