@@ -9,7 +9,7 @@ map("n", "<leader>n", "<cmd>split<cr>", opts)
 map("n", "<leader>m", "<cmd>vsplit<cr>", opts)
 
 -- close buffer
-map("n", "<leader>o", "<cmd>q<cr>", opts)
+map("n", "<leader>k", "<cmd>q<cr>", opts)
 
 -- window movement
 map("n", "<C-h>", "<C-w>h", opts)

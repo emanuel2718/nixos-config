@@ -14,6 +14,11 @@
       ct = "cargo test";
       cc = "cargo check";
 
+      tn = "tmux new -s";
+      tk = "tmux kill-session -t";
+      ta = "tmux a -t";
+      tl = "tmux ls";
+
       gsync = "git stash; and git pull --rebase; and git stash pop";
       gs = "git status";
       gl = "git prettylog";
