@@ -47,7 +47,7 @@ require('telescope').setup({
       ".gradle/",
       ".idea/",
       ".settings/",
-      -- ".vscode/*",
+      ".vscode/*",
       "__pycache__/",
       "build/",
       "env/",
