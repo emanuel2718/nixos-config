@@ -6,7 +6,7 @@
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi-.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "x220";
   services.blueman.enable = false;
