@@ -14,7 +14,7 @@ NixOS Config
 
 
 ```shell
-git clone git@github.com:emanuel2718/nixos-config.git $HOME/.dotfiles
+git clone https://github.com/emanuel2718/nixos-config.git $HOME/.dotfiles
 cp /etc/nixos/hardware-configuratioun.nix ~/nixos-config/machines/<M>/.
 cd $HOME/.dotfiles
 sudo nixos-rebuild switch --flake .#<M>
