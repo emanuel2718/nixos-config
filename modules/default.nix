@@ -2,9 +2,9 @@
 {
   imports = 
     [(import ../modules/fish)]
-    ++ [(import ../modules/git)]
+    ++ [(import ../modules/gitconfig)]
     ++ [(import ../modules/starship)]
-    ++ [(import ../modules/vscode)]
+    ++ [(import ../modules/code)]
     ++ [(import ../modules/tmux)]
     ++ [(import ../modules/rofi)]
     ++ [(import ../modules/nvim)];

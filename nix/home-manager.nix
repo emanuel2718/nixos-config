@@ -45,7 +45,6 @@
       ripgrep
       rsync
       unzip
-      vscode
       wezterm
       xclip
       valgrind
