@@ -11,20 +11,39 @@ let
   };
 
 in {
-  nixos = nixpkgs.lib.nixosSystem {
+  vm-x86 = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs user pkgs; };
     modules = [
-      ./nixos/configuration.nix
-      ./nixos/hardware.nix
+      ./vm-x86/configuration.nix
+      ./vm-x86/hardware.nix
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = let
-          machine = "nixos";
+          host = "vm-x86";
         in {
-          inherit user inputs machine;
+          inherit user inputs host;
+        };
+        home-manager.users.${user} = import ../nix/home-manager.nix;
+      }
+    ];
+  };
+  x220 = nixpkgs.lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs user pkgs; };
+    modules = [
+      ./x220/configuration.nix
+      ./x220/hardware.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = let
+          host = "x220";
+        in {
+          inherit user inputs host;
         };
         home-manager.users.${user} = import ../nix/home-manager.nix;
       }

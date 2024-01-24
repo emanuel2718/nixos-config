@@ -15,9 +15,9 @@ NixOS Config
 
 ```shell
 git clone https://github.com/emanuel2718/nixos-config.git $HOME/.dotfiles
-cp /etc/nixos/hardware-configuratioun.nix ~/nixos-config/machines/<M>/.
+cp /etc/nixos/hardware-configuratioun.nix ~/nixos-config/hosts/<HOST>/.
 cd $HOME/.dotfiles
-sudo nixos-rebuild switch --flake .#<M>
+sudo nixos-rebuild switch --flake .#<HOST>
 sudo reboot now
 ```
 
