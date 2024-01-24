@@ -49,4 +49,23 @@ in {
       }
     ];
   };
+  blade = nixpkgs.lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs user pkgs; };
+    modules = [
+      ./blade/configuration.nix
+      ./blade/hardware.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = let
+          host = "blade";
+        in {
+          inherit user inputs host;
+        };
+        home-manager.users.${user} = import ../nix/home-manager.nix;
+      }
+    ];
+  };
 }
