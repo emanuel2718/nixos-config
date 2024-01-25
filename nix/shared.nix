@@ -31,11 +31,22 @@
     autoRepeatDelay = 170;
     autoRepeatInterval = 90;
     displayManager = {
+      lightdm = {
+        enable = true;
+      };
       defaultSession = "none+i3";
+      # sessionCommands = ''
+      #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option "caps:ctrl_modifier"
+      #  ${pkgs.xcape}/bin/xcape "Caps_Lock=Escape"
+      #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option "caps:ctrl_modifier"
+      #  ${pkgs.xcape}/bin/xcape "Caps_Lock=Escape;Control_L=Escape;Control_R=Escape"
+      #  # ${pkgs.xorg.xrandr}/bin/xrandr xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 144 --output eDP-1-1 --off
+      # '';
     };
     desktopManager = {
+      xterm.enable = false;
       xfce = {
-        enable = true;
+        enable = false;
         noDesktop = true;
       };
       wallpaper = {
@@ -87,14 +98,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    wget
-    firefox
-  ];
 
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;

@@ -12,8 +12,6 @@
 
   # TODO: merge this to a nix modules
   home.file.".vimrc".text = builtins.readFile ../modules/config/.vimrc;
-  home.file.".xprofile".text = builtins.readFile ../modules/config/.xprofile;
-  
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ../modules/config/i3config;
@@ -53,6 +51,7 @@
       zig
       gcc
       nodejs
+      xcape
 
       nodePackages_latest.pyright
       cmake-language-server

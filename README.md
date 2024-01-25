@@ -14,8 +14,10 @@ NixOS Config
 
 
 ```shell
+nix-shell -p vim git
+
 git clone https://github.com/emanuel2718/nixos-config.git $HOME/.dotfiles
-cp /etc/nixos/hardware-configuratioun.nix $HOME/.dotfiles/hosts/<HOST>/hardware.nix
+sudo cp /etc/nixos/hardware-configuration.nix $HOME/.dotfiles/hosts/<HOST>/hardware.nix
 cd $HOME/.dotfiles
 sudo nixos-rebuild switch --flake .#<HOST>
 sudo reboot now

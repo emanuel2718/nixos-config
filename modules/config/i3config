@@ -250,6 +250,13 @@ bindsym $mod+Shift+d [class="Chromium"] focus
 
 
 exec_always feh --bg-fill $HOME/Pictures/wallpaper.jpg
+exec --no-startup-id xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 144 --output eDP-1-1 --off
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+exec --no-startup-id xcape -e 'Caps_Lock=Escape'
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+exec --no-startup-id xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+
+
 
 # exec --no-startup-id source $HOME/.xinitrc
 
