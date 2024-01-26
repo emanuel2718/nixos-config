@@ -2,11 +2,7 @@
 NixOS Config
 </h1>
 
-
-![dom 21 ene 2024 11:41:40 AST](https://github.com/emanuel2718/dotmaker/assets/55965894/25349c23-054a-4464-898b-276ddd068359)
-
-![lun 22 ene 2024 20:51:45 AST](https://github.com/emanuel2718/dotmaker/assets/55965894/400caebc-98f4-4d6f-9c82-65a72b7514de)
-
+![vie 26 ene 2024 07:03:01 AST](https://github.com/emanuel2718/nixos-config/assets/55965894/5a087e46-5d74-4b89-a761-7cc9a95008c7)
 
 
 
