@@ -8,7 +8,7 @@
     ]));
     shellAliases = {
       cal = "cal -y";
-      pbcopy = "xclip -selection -c";
+      pbcopy = "xclip -sel c";
 
       cr = "cargo run";
       ct = "cargo test";

@@ -1,4 +1,4 @@
-{ pkgs, user, lib, inputs, ... }:
+{ pkgs, user, lib, inputs, nixpkgs, ... }:
 {
 
   # Enable networking
@@ -22,7 +22,6 @@
     LC_TIME = "es_PR.UTF-8";
   };
 
-
   # Configure keymap in X11
   services.xserver = {
     enable = true;
@@ -30,18 +29,12 @@
     xkbVariant = "";
     autoRepeatDelay = 170;
     autoRepeatInterval = 90;
+    xkb.options = "caps:escape";
     displayManager = {
       lightdm = {
         enable = true;
       };
       defaultSession = "none+i3";
-      # sessionCommands = ''
-      #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option "caps:ctrl_modifier"
-      #  ${pkgs.xcape}/bin/xcape "Caps_Lock=Escape"
-      #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option "caps:ctrl_modifier"
-      #  ${pkgs.xcape}/bin/xcape "Caps_Lock=Escape;Control_L=Escape;Control_R=Escape"
-      #  # ${pkgs.xorg.xrandr}/bin/xrandr xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 144 --output eDP-1-1 --off
-      # '';
     };
     desktopManager = {
       xterm.enable = false;

@@ -9,7 +9,6 @@ let
     config.allowUnfree = true;
     overlays = overlays;
   };
-
 in {
   vm-x86 = nixpkgs.lib.nixosSystem {
     inherit system;
@@ -51,7 +50,7 @@ in {
   };
   blade = nixpkgs.lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs user pkgs; };
+    specialArgs = { inherit inputs user pkgs nixpkgs; };
     modules = [
       ./blade/configuration.nix
       ./blade/hardware.nix

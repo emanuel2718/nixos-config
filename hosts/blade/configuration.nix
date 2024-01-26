@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, nixpkgs, ... }: {
   imports = [
      ./hardware.nix
      ../../nix/shared.nix
@@ -6,13 +6,15 @@
 
   networking.hostName = "blade";
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.device = "/dev/vda";
-  #boot.loader.grub.useOSProber = true;
+  # Bootloader.
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
 
   # Bluetooth
   hardware.bluetooth = {
@@ -41,11 +43,11 @@
     };
   };
 
-  services.xserver.displayManager.setupCommands = ''
-    LAPTOP="eDP-1-1"
-    MONITOR="HDMI-0"
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $MONITOR --primary --mode 2560x1440 --rate 144 --output $LAPTOP --off
-  '';
+  # services.xserver.displayManager.setupCommands = ''
+  #   LAPTOP="eDP-1-1"
+  #   MONITOR="HDMI-0"
+  #   ${pkgs.xorg.xrandr}/bin/xrandr --output $MONITOR --primary --mode 2560x1440 --rate 144 --output $LAPTOP --off
+  # '';
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
