@@ -81,6 +81,7 @@ in {
       cmake-language-server
       nil
       rust-analyzer
+      clang-tools
       nodePackages_latest.pyright
       nodePackages.vim-language-server
       nodePackages.volar

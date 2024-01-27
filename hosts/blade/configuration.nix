@@ -16,6 +16,8 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
 
+  systemd.sleep.extraConfig = "HibernateDelaySec=4h";
+
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
