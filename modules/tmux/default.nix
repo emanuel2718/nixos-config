@@ -11,6 +11,9 @@
         set-option -g renumber-window on
         setw -g mode-keys vi
 
+        set -g prefix C-s
+        bind C-s send-prefix
+
         bind-key o kill-pane
         bind-key u previous-window
         bind-key i next-window
