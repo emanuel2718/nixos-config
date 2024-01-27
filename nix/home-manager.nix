@@ -22,7 +22,12 @@ in {
 
 
   # TODO: merge this to a nix modules
-  home.file.".vimrc".text = builtins.readFile ../modules/config/.vimrc;
+  home.file = {
+    ".vimrc".text = builtins.readFile ../modules/config/.vimrc;
+    ".xsessionrc".text = ''
+      xset r rate 170 90
+    '';
+  };
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ../modules/config/i3config;
