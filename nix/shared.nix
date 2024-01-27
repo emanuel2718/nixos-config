@@ -29,7 +29,7 @@
     xkbVariant = "";
     autoRepeatDelay = 170;
     autoRepeatInterval = 90;
-    xkb.options = "caps:escape";
+    # xkb.options = "caps:escape";
     displayManager = {
       lightdm = {
         enable = true;
@@ -39,8 +39,9 @@
     desktopManager = {
       xterm.enable = false;
       xfce = {
-        enable = false;
+        enable = true;
         noDesktop = true;
+        enableXfwm = false;
       };
       wallpaper = {
           # NOTE: it will source $HOME/.background-image as the wallpaper by default
@@ -53,6 +54,9 @@
       i3.enable = true;
     };
   };
+
+  # sets caps lock to escape+ctrl
+  services.interception-tools.enable = true;
 
   # Set XDG environment
   environment.sessionVariables = {
@@ -78,7 +82,7 @@
   };
 
 
-    # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
