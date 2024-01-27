@@ -65,12 +65,26 @@ in {
       nodejs
       xcape
       obsidian
+      chromium
+      any-nix-shell # fish support for nix-shell
+      gimp
+      hyperfine
+      libreoffice
+      dunst
+      betterlockscreen
+      # pulseaudio stuff
+      pavucontrol
+      paprefs
+      pasystray
+      vlc
 
-      nodePackages_latest.pyright
       cmake-language-server
       nil
       rust-analyzer
+      nodePackages_latest.pyright
       nodePackages.vim-language-server
+      nodePackages.volar
+      nodePackages.typescript-language-server
       lua-language-server
       buf-language-server
     ];

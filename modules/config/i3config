@@ -243,7 +243,8 @@ bindsym Ctrl+$mod+y exec --no-startup-id maim --window $(xdotool getactivewindow
 bindsym $mod+Shift+y exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 
-bindsym $mod+x exec $HOME/dev/bin/i3-lock.sh
+# bindsym $mod+x exec $HOME/dev/bin/i3-lock.sh
+bindsym $mod+x exec betterlockscreen -l dim
 
 # Focus Obsidian from anywhere
 bindsym $mod+Shift+o [class="obsidian"] focus
