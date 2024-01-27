@@ -191,9 +191,10 @@ in {
         type = "lua";
       }
 
-      # Neotree
+      vimPlugins.nvim-window-picker
+      vimPlugins.nui-nvim
       {
-        plugin = gitClone "nvim-neo-tree/neo-tree.nvim" "main" "e578fe7a5832421b0d2c5b3c0a7a1e40e0f6a47a";
+        plugin = vimPlugins.neo-tree-nvim;
         config = builtins.readFile lua/plugins/neotree.lua;
         type = "lua";
       }
