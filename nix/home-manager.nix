@@ -22,12 +22,16 @@ in {
 
 
   # TODO: merge this to a nix modules
-  home.file = {
-    ".vimrc".text = builtins.readFile ../modules/config/.vimrc;
-    ".xsessionrc".text = ''
-      xset r rate 170 90
-    '';
+  home.file.".vimrc".text = builtins.readFile ../modules/config/.vimrc;
+  home.file.".xsessionrc".text = ''xset r rate 170 90'';
+  home.file.".local/bin/" = {
+      recursive = true;
+      source = ../bin;
+      target = ".local/bin";
+      executable = true;
   };
+
+
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ../modules/config/i3config;
@@ -67,7 +71,9 @@ in {
       gnumake
       zig
       gcc
+      gdb
       nodejs
+      bun
       xcape
       obsidian
       chromium

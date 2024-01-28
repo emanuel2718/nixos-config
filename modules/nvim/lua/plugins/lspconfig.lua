@@ -15,7 +15,7 @@ local diagnostic_config = {
         { name = "DiagnosticSignInfo", text = 'I' },
       },
     },
-    virtual_text = false,
+    virtual_text = true,
     update_in_insert = false,
     underline = false,
     severity_sort = true,
@@ -105,4 +105,4 @@ local server_opts = { on_attach = on_attach, capabilities = capabilities() }
 require('neodev').setup({})
 
 -- Server setups
--- lspconfig.rust_analyzer.setup(server_opts)
+lspconfig.rust_analyzer.setup(server_opts)

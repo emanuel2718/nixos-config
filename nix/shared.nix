@@ -129,6 +129,8 @@
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
+  environment.localBinInPath = true;
+
   system.stateVersion = "23.11";
 
   # Flakes

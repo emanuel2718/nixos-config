@@ -5,6 +5,8 @@
     interactiveShellInit = lib.strings.concatStrings (lib.strings.intersperse "\n" ([
       "set -g fish_greeting"
       "fish_vi_key_bindings"
+      "set -Ux PROJECTS $HOME/dev"
+      "set PATH $PATH $HOME/.local/bin"
     ]));
     shellAliases = {
       cal = "cal -y";
@@ -18,6 +20,8 @@
       tk = "tmux kill-session -t";
       ta = "tmux a -t";
       tl = "tmux ls";
+
+      tt = "tmux-sessionizer";
 
       gsync = "git stash; and git pull --rebase; and git stash pop";
       gs = "git status";

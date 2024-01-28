@@ -38,7 +38,7 @@ in {
       # LSP
       vimPlugins.neodev-nvim
       vimPlugins.fzf-lua
-      pkgs.vimPlugins.rustaceanvim
+      # pkgs.vimPlugins.rustaceanvim
       {
         plugin = vimPlugins.nvim-lspconfig;
         config = builtins.readFile lua/plugins/lspconfig.lua;

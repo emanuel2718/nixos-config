@@ -36,6 +36,8 @@
         bind -r K resize-pane -U 10
         bind -r L resize-pane -R 10
 
+        bind-key -r p run-shell "tmux neww tmux-sessionizer"
+
         # don't dettach session when closing the last pane
         set -g detach-on-destroy off
 
