@@ -8,26 +8,40 @@ let
       version = "1.8.27";
       sha256 = "sha256-6FktlAJmOD3dQNn2TV83ROw41NXZ/MgquB0RFQqwwW0=";
     };
+    vueTypescript = pkgs.vscode-utils.extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin
+      publisher = "Vue";
+      name = "vscode-typescript-vue-plugin";
+      version = "1.8.27";
+      sha256 = "sha256-6FktlAJmOD3dQNn2TV83ROw41NXZ/MgquB0RFQqwwW1=";
+    };
   };
 in {
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
+      alefragnani.project-manager
+      editorconfig.editorconfig
+      christian-kohler.path-intellisense
+      github.copilot
 
       # languages
-
       bbenoist.nix
       brettm12345.nixfmt-vscode
       rust-lang.rust-analyzer
       ms-python.python
       yzhang.markdown-all-in-one
+      bmewburn.vscode-intelephense-client
+      redhat.vscode-yaml
+      bradlc.vscode-tailwindcss
 
       # formatters and linters
       esbenp.prettier-vscode
+      ms-python.isort
+      ms-python.black-formatter
       dbaeumer.vscode-eslint
-      christian-kohler.path-intellisense
-      github.copilot
+
       vscodePkgs.volar
     ];
     userSettings = {
