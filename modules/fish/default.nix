@@ -7,6 +7,7 @@
       "fish_vi_key_bindings"
       "set -Ux PROJECTS $HOME/dev"
       "set PATH $PATH $HOME/.local/bin"
+      "set -x DIRENV_LOG_FORMAT ''"
     ]));
     shellAliases = {
       cal = "cal -y";
