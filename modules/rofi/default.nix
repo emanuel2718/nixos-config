@@ -3,10 +3,8 @@
   programs = {
     rofi = {
       enable = true;
-      plugins = [
-        pkgs.rofi-calc
-        pkgs.rofi-top
-      ];
+      plugins = with pkgs; [ rofi-calc rofi-top ];
+      terminal = "${pkgs.wezterm}/bin/wezterm";
     };
   };
 }
