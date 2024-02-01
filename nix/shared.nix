@@ -27,14 +27,17 @@
     enable = true;
     layout = "us";
     xkbVariant = "";
-    autoRepeatDelay = 170;
-    autoRepeatInterval = 90;
+    # autoRepeatDelay = 170;
+    # autoRepeatInterval = 90;
     # xkb.options = "caps:escape";
     displayManager = {
       lightdm = {
         enable = true;
       };
       defaultSession = "none+i3";
+      sessionCommands = ''
+      ${pkgs.xorg.xset}/bin/xset r rate 170 90
+      '';
     };
     desktopManager = {
       xterm.enable = false;

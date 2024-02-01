@@ -14,6 +14,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.useOSProber = true;
 
   systemd.sleep.extraConfig = "HibernateDelaySec=4h";
