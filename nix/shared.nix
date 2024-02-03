@@ -138,6 +138,13 @@
 
   environment.localBinInPath = true;
 
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wget
+    firefox
+  ];
+
   system.stateVersion = "23.11";
 
   # Flakes

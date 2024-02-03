@@ -54,10 +54,6 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    wget
-    firefox
     openrazer-daemon
     arandr
     python313
