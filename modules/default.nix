@@ -7,5 +7,6 @@
     ++ [(import ../modules/code)]
     ++ [(import ../modules/tmux)]
     ++ [(import ../modules/rofi)]
+    ++ [(import ../modules/alacritty)]
     ++ [(import ../modules/nvim)];
 }

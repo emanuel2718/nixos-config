@@ -88,6 +88,7 @@ in {
       paprefs
       pasystray
       vlc
+      terminus-nerdfont
 
       cmake-language-server
       nil

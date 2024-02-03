@@ -52,7 +52,7 @@
       };
       wallpaper = {
           # NOTE: it will source $HOME/.background-image as the wallpaper by default
-        mode = "scale";
+        mode = "fill";
         combineScreens = false;
       };
     };
