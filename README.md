@@ -21,5 +21,5 @@ sudo reboot now
 
 
 ## TODO
-- [ ] add tmux sessionizer
+- [x] add tmux sessionizer
 - [ ] fully port Nvim config to nix (currently 50/50 lua/nix)

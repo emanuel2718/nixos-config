@@ -159,7 +159,6 @@ in {
 
 
       # Terminal
-
       {
         plugin = vimPlugins.FTerm-nvim;
         config = ''
@@ -183,7 +182,6 @@ in {
         type = "lua";
       }
 
-
       # Toggle LSP Diagnostics
       {
         plugin = gitClone "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" "main" "4fbfb51e3902d17613be0bc03035ce26b9a8d05d";
@@ -198,6 +196,31 @@ in {
         config = builtins.readFile lua/plugins/neotree.lua;
         type = "lua";
       }
+
+      # Colorschemes
+
+      # Vs*
+      # {
+      #    plugin = gitClone "Mofiqul/vscode.nvim" "main" "380c1068612b1bfbe35d70a4f2e58be5030a0707";
+      #    config = ''
+      #      require('vscode').setup({
+      #        transparent = false,
+      #        italic_comments = false,
+      #        disable_nvimtree_bg = true,
+      #        -- Override colors (see ./lua/vscode/colors.lua)
+      #        color_overrides = {
+      #            vscLineNumber = '#FFFFFF',
+      #        },
+      #        -- Override highlight groups (see ./lua/vscode/theme.lua)
+      #        group_overrides = {
+      #            -- this supports the same val table as vim.api.nvim_set_hl
+      #            -- use colors from this colorscheme by requiring vscode.colors!
+      #            Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
+      #        }
+      #      })
+      #    '';
+      #    type = "lua";
+      # }
     ];
   };
 }

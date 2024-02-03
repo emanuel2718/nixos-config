@@ -5,9 +5,12 @@
         historyLimit = 50000;
         mouse = true;
         escapeTime = 10;
-        terminal = "screen-256color";
         baseIndex = 1;
         extraConfig = ''
+        setenv -g COLORTERM "truecolor"
+        set-option -g default-terminal "tmux-256color"
+        set -as terminal-features ",xterm-256color:RGB"
+
         set-option -g renumber-window on
         setw -g mode-keys vi
 
@@ -42,6 +45,7 @@
         set -g detach-on-destroy off
 
         # theme
+        set-option -g status-right ""
         set-option -g status-left-length 100
         set-option -g status-left " #{session_name}  "
         set-option -g status-style "fg=#7C7D83 bg=default" # default will set the background to transparent

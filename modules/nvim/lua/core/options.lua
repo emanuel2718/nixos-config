@@ -49,4 +49,6 @@ opt.updatetime = 100 -- faster completion (4000ms default)
 opt.wrap = false
 opt.writebackup = false
 
-vim.cmd.colorscheme('lunaperche')
+vim.cmd('hi Normal guibg=black ctermbg=black')
+
+-- vim.cmd.colorscheme('lunaperche')

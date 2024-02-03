@@ -25,8 +25,12 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+
+
+    };
     # autoRepeatDelay = 170;
     # autoRepeatInterval = 90;
     # xkb.options = "caps:escape";
