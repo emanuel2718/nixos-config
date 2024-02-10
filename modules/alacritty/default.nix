@@ -28,8 +28,8 @@
       window = {
         decorations = "full";
         padding = {
-          x = 0;
-          y = 0;
+          x = 5;
+          y = 5;
         };
       };
     };

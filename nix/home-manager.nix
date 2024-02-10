@@ -89,9 +89,12 @@ in {
       pasystray
       vlc
       terminus-nerdfont
+      thunderbird
+      github-desktop
 
       cmake-language-server
       nil
+      rnix-lsp
       rust-analyzer
       clang-tools
       nodePackages_latest.pyright
@@ -100,6 +103,7 @@ in {
       nodePackages.typescript-language-server
       lua-language-server
       buf-language-server
+      tailwindcss-language-server
     ];
   };
 

@@ -142,7 +142,8 @@
     vim
     git
     wget
-    firefox
+    firefox-devedition
+    #firefox
   ];
 
   system.stateVersion = "23.11";

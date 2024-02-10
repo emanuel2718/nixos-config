@@ -27,7 +27,8 @@ opt.number = true
 opt.pumblend = 10
 opt.pumheight = 10 -- pop up menu
 opt.ruler = true
-opt.scrolloff = 0
+opt.scrolloff = 8
+opt.scrolloff = 6
 opt.shiftround = true
 opt.shiftwidth = 2
 opt.shortmess:append "c"
@@ -49,6 +50,8 @@ opt.updatetime = 100 -- faster completion (4000ms default)
 opt.wrap = false
 opt.writebackup = false
 
-vim.cmd('hi Normal guibg=black ctermbg=black')
 
+
+
+-- vim.cmd('hi Normal guibg=black ctermbg=black')
 -- vim.cmd.colorscheme('lunaperche')
