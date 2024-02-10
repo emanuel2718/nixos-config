@@ -8,6 +8,10 @@ map("n", "<leader>bi", builtin.buffers, opts)
 map("n", "<leader>fr", builtin.oldfiles, opts)
 map("n", "<leader>hh", builtin.help_tags, opts)
 map("n", "<leader>ht", builtin.colorscheme, opts)
+map("n", "<leader>df", builtin.diagnostics, opts)
+map("n", "<leader>kk", builtin.keymaps, opts)
+map("n", "<leader>mp", builtin.man_pages, opts)
+map("n", "<leader>r.", builtin.resume, opts)
 
 -- TODO: move this from here to a fzf.lua dedicated file
 map('n', '<leader>ss', '<cmd>FzfLua grep_curbuf<cr>', opts)
@@ -18,6 +22,7 @@ map('n', '<leader>gc', '<cmd>FzfLua git_commits<cr>', opts)
 
 require('telescope').setup({
   defaults = {
+    path_display = { 'shorten' },
     mappings = {
       i = {
         ["<C-x>"] = false,
@@ -36,6 +41,7 @@ require('telescope').setup({
     file_ignore_patterns = {
       "vendor/*",
       "%.lock",
+      ".nuxt/*",
       "__pycache__/*",
       ".mypy_cache/*",
       "%.sqlite3",
