@@ -31,6 +31,7 @@
 
       neovim = "NVIM_APPNAME=NeoVim nvim";
 
+      usenix = "echo 'use nix' > .envrc && direnv allow";
     };
   };
 }

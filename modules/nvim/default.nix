@@ -34,7 +34,19 @@ in
       }
 
       # Formatter
-      vimPlugins.conform-nvim
+      {
+        plugin = vimPlugins.conform-nvim;
+        config = ''
+          require('conform').setup({
+            formatters_by_ft = {
+              lua = { "stylua" },
+              rust = { 'rustfmt' },
+            }
+          })
+        '';
+        type = "lua";
+
+      }
 
       # LSP
       vimPlugins.neodev-nvim
