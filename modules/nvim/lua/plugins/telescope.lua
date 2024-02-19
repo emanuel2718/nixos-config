@@ -22,7 +22,7 @@ map('n', '<leader>gc', '<cmd>FzfLua git_commits<cr>', opts)
 
 require('telescope').setup({
   defaults = {
-    path_display = { 'shorten' },
+    -- path_display = { 'shorten' },
     mappings = {
       i = {
         ["<C-x>"] = false,
@@ -87,7 +87,7 @@ require('telescope').setup({
     live_grep = {
       theme = "ivy",
       previewer = false,
-      path_display = { "shorten" },
+      -- path_display = { "shorten" },
     },
     find_files = {
       previewer = false,

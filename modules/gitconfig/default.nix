@@ -16,6 +16,10 @@ in {
         github.user = "emanuel2718";
         init.defaultBranch = "master";
         pull.rebase = true;
+        rebase.autosquash = true;
+        commit.verbose = true;
+        rerere.enabled = true;
+        merge.conflictstyle = "zdiff3";
         core = {
           editor = "nvim";
           pager = "diff-so-fancy | less --tabs=4 -RFX";

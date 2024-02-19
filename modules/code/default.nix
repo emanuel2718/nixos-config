@@ -13,10 +13,12 @@ let
       publisher = "Vue";
       name = "vscode-typescript-vue-plugin";
       version = "1.8.27";
-      sha256 = "sha256-6FktlAJmOD3dQNn2TV83ROw41NXZ/MgquB0RFQqwwW1=";
+      sha256 = "sha256-ym1+WPKBcn4h9lqSFVehfiDoGUEviOSEVXVLhHcYvfc=";
+
     };
   };
-in {
+in
+{
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
@@ -35,6 +37,9 @@ in {
       bmewburn.vscode-intelephense-client
       redhat.vscode-yaml
       bradlc.vscode-tailwindcss
+      ms-vscode.cpptools
+      vscodePkgs.volar
+      vscodePkgs.vueTypescript
 
       # formatters and linters
       esbenp.prettier-vscode
@@ -42,11 +47,12 @@ in {
       ms-python.black-formatter
       dbaeumer.vscode-eslint
 
-      vscodePkgs.volar
     ];
     userSettings = {
       "telemetry.telemetryLevel" = "off";
 
+      "editor.fontSize" = 14;
+      "editor.fontFamily" = "FiraCode Nerd Font";
       "editor.accessibilitySupport" = "off";
       "editor.hover.sticky" = true;
       "editor.guides.identation" = false;
@@ -82,27 +88,27 @@ in {
       "search.smartCase" = true;
       "search.quickOpen.includeHistory" = false;
       "search.exclude" = {
-          "**/.nuxt" = true;
-          "**/node_modules" = true;
-          "**/.git" = true;
-          "**/.turbo" = true;
-          "**/dist" = true;
-          "**/out" = true;
-          "**/*.code-search" = true;
-          "**/.github" = true;
-          "**/.output" = true;
-          "**/.pnpm" = true;
-          "**/.vscode" = true;
-          "**/.yarn" = true;
-          "**/bower_components" = true;
-          "**/dist/**" = true;
-          "**/logs" = true;
-          "**/out/**" = true;
-          "**/package-lock.json" = true;
-          "**/pnpm-lock.yaml" = true;
-          "**/tmp" = true;
-          "**/yarn.lock" = true;
-    };
+        "**/.nuxt" = true;
+        "**/node_modules" = true;
+        "**/.git" = true;
+        "**/.turbo" = true;
+        "**/dist" = true;
+        "**/out" = true;
+        "**/*.code-search" = true;
+        "**/.github" = true;
+        "**/.output" = true;
+        "**/.pnpm" = true;
+        "**/.vscode" = true;
+        "**/.yarn" = true;
+        "**/bower_components" = true;
+        "**/dist/**" = true;
+        "**/logs" = true;
+        "**/out/**" = true;
+        "**/package-lock.json" = true;
+        "**/pnpm-lock.yaml" = true;
+        "**/tmp" = true;
+        "**/yarn.lock" = true;
+      };
 
       # Language settings
       "[rust]"."editor.tabSize" = 4;
@@ -133,23 +139,23 @@ in {
       "vim.highlightedyank.enable" = true;
       "vim.highlightedyank.color" = "rgba(255, 140, 0, 0.5)";
       "vim.normalModeKeyBindings" = [
-        { before = ["K"]; commands = ["editor.action.showHover"]; }
-        { before = ["<C-c>"]; commands = ["editor.action.quickFix"]; }
-        { before = [ "leader" "f" "s" ]; commands = ["workbench.action.files.save"]; }
-        { before = [ "leader" "." ]; commands = ["workbench.action.quickOpen"]; }
-        { before = [ "leader" "o" ]; commands = ["workbench.action.closeEditorsInGroup"]; }
-        { before = [ "leader" "m" ]; commands = ["workbench.action.splitEditor"]; }
-        { before = [ "leader" "n" ]; commands = ["workbench.action.splitEditorDown"]; }
-        { before = [ "leader" "s" "i" ]; commands = ["workbench.action.showAllSymbols"]; }
-        { before = [ "leader" "s" "p" ]; commands = ["workbench.action.findInFiles"]; }
-        { before = [ "leader" "l" "f" ]; commands = ["editor.action.format"]; }
-        { before = [ "leader" "h" "t" ]; commands = ["workbench.action.selectTheme"]; }
+        { before = [ "K" ]; commands = [ "editor.action.showHover" ]; }
+        { before = [ "<C-c>" ]; commands = [ "editor.action.quickFix" ]; }
+        { before = [ "leader" "f" "s" ]; commands = [ "workbench.action.files.save" ]; }
+        { before = [ "leader" "." ]; commands = [ "workbench.action.quickOpen" ]; }
+        { before = [ "leader" "o" ]; commands = [ "workbench.action.closeEditorsInGroup" ]; }
+        { before = [ "leader" "m" ]; commands = [ "workbench.action.splitEditor" ]; }
+        { before = [ "leader" "n" ]; commands = [ "workbench.action.splitEditorDown" ]; }
+        { before = [ "leader" "s" "i" ]; commands = [ "workbench.action.showAllSymbols" ]; }
+        { before = [ "leader" "s" "p" ]; commands = [ "workbench.action.findInFiles" ]; }
+        { before = [ "leader" "l" "f" ]; commands = [ "editor.action.format" ]; }
+        { before = [ "leader" "h" "t" ]; commands = [ "workbench.action.selectTheme" ]; }
       ];
       "vim.visualModeKeyBindings" = [
-        { before = [">"]; commands = ["editor.action.indentLines"]; }
-        { before = ["<"]; commands = ["editor.action.outdentLines"]; }
-        { before = ["<S-j>"]; commands = ["editor.action.moveLinesDownAction"]; }
-        { before = ["<S-k>"]; commands = ["editor.action.moveLinesUpAction"]; }
+        { before = [ ">" ]; commands = [ "editor.action.indentLines" ]; }
+        { before = [ "<" ]; commands = [ "editor.action.outdentLines" ]; }
+        { before = [ "<S-j>" ]; commands = [ "editor.action.moveLinesDownAction" ]; }
+        { before = [ "<S-k>" ]; commands = [ "editor.action.moveLinesUpAction" ]; }
       ];
     };
     keybindings = [

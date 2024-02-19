@@ -10,9 +10,13 @@
       };
       font = {
         # normal = {
-        #   family = "JetBrainsMono Nerd Font";
-        #   style = "Medium";
+        #   family = "Terminess Nerd Font";
+        #   style = "Regular";
         # };
+        normal = {
+          family = "FiraCode Nerd Font";
+          style = "Regular";
+        };
         size = 10;
       };
       keyboard.bindings = [

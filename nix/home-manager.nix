@@ -14,7 +14,6 @@ in {
 
   imports = [ (import ../modules { inherit pkgs; } ) ];
 
-
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
@@ -89,6 +88,7 @@ in {
       pasystray
       vlc
       terminus-nerdfont
+      fira-code-nerdfont
       thunderbird
       github-desktop
 
@@ -97,6 +97,7 @@ in {
       rnix-lsp
       rust-analyzer
       clang-tools
+      nodePackages_latest.pnpm
       nodePackages_latest.pyright
       nodePackages.vim-language-server
       nodePackages.volar
