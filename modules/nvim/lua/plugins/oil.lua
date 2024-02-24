@@ -1,10 +1,10 @@
 local oil = require('oil')
-local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 map("n", "-", oil.open, opts)
 
-oil.setup({
+require('oil').setup {
   skip_confirm_for_simple_edits = true,
   use_default_keymaps = false,
   keymaps = {
@@ -27,8 +27,8 @@ oil.setup({
   },
   view_options = {
     show_hidden = true,
-    is_always_hidden = function(name, bufnr)
+    is_always_hidden = function(name)
       return vim.startswith(name, ".DS_Store")
     end,
   },
-})
+}
