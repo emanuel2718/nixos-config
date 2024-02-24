@@ -30,10 +30,10 @@ in
 
       # languages
       bbenoist.nix
-      brettm12345.nixfmt-vscode
       rust-lang.rust-analyzer
       ms-python.python
       yzhang.markdown-all-in-one
+      sumneko.lua
       bmewburn.vscode-intelephense-client
       redhat.vscode-yaml
       bradlc.vscode-tailwindcss
@@ -46,13 +46,16 @@ in
       ms-python.isort
       ms-python.black-formatter
       dbaeumer.vscode-eslint
+      brettm12345.nixfmt-vscode
 
     ];
     userSettings = {
       "telemetry.telemetryLevel" = "off";
 
-      "editor.fontSize" = 14;
-      "editor.fontFamily" = "FiraCode Nerd Font";
+      "editor.fontSize" = 16;
+      # "editor.fontFamily" = "FiraCode Nerd Font";
+      "editor.tabSize" = 2;
+      "editor.fontFamily" = "Terminess Nerd Font";
       "editor.accessibilitySupport" = "off";
       "editor.hover.sticky" = true;
       "editor.guides.identation" = false;
@@ -70,6 +73,7 @@ in
         "comments" = "off";
       };
 
+      "workbench.colorTheme" = "Gruber Darker";
       "workbench.settings.editor" = "json";
       "workbench.editor.closeFileOnDelete" = true;
       "workbench.editor.highlightModifiedTabs" = true;
@@ -112,9 +116,9 @@ in
 
       # Language settings
       "[rust]"."editor.tabSize" = 4;
+      "[lua]"."editor.tabSize" = 2;
       "[cpp]"."editor.tabSize" = 4;
       "[c]"."editor.tabSize" = 4;
-      "[nix]"."editor.tabSize" = 2;
       "[vue]" = {
         "editor.tabSize" = 2;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -126,6 +130,12 @@ in
       "[jsonc]" = {
         "editor.tabSize" = 2;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+      "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
+      "[nix]" = {
+        "editor.tabSize" = 2;
+        "editor.indent_size" = 2;
+        "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
       };
 
       # Vim
@@ -164,11 +174,11 @@ in
       { key = "cmd+c"; command = "editor.action.clipboardCopyAction"; }
       { key = "cmd+v"; command = "editor.action.clipboardPasteAction"; }
       { key = "cmd+."; command = "editor.action.triggerParameterHints"; when = "editorHasSignatureHelpProvider && editorTextFocus"; }
-      { key = "cmd+;"; command = "editor.action.inlineSuggest.commit"; when = "editorFocus"; }
+      { key = "ctrl+y"; command = "editor.action.inlineSuggest.commit"; when = "editorFocus"; }
 
       { key = "ctrl+;"; command = "workbench.action.toggleActivityBarVisibility"; }
-      { key = "ctrl+n"; command = "workbench.action.toggleSidebarVisibility"; }
-      { key = "ctrl+n"; command = "workbench.files.action.focusFilesExplorer"; when = "editorTextFocus"; }
+      { key = "ctrl+e"; command = "workbench.action.toggleSidebarVisibility"; }
+      { key = "ctrl+e"; command = "workbench.files.action.focusFilesExplorer"; when = "editorTextFocus"; }
       { key = "ctrl+t"; command = "workbench.action.terminal.toggleTerminal"; }
 
       { key = "a"; command = "explorer.newFile"; when = "filesExplorerFocus && !inputFocus"; }
