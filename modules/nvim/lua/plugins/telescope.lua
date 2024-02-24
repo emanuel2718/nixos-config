@@ -1,114 +1,97 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
-map("n", "<leader>.", builtin.find_files, opts)
-map("n", "<leader>bi", builtin.buffers, opts)
-map("n", "<leader>fr", builtin.oldfiles, opts)
-map("n", "<leader>hh", builtin.help_tags, opts)
-map("n", "<leader>ht", builtin.colorscheme, opts)
-map("n", "<leader>df", builtin.diagnostics, opts)
-map("n", "<leader>kk", builtin.keymaps, opts)
-map("n", "<leader>mp", builtin.man_pages, opts)
-map("n", "<leader>r.", builtin.resume, opts)
+map('n', '<leader>fo', function() builtin.oldfiles { previewer = false, sorting_strategy = 'descending' } end, opts)
+map('n', '<leader>ss', builtin.builtin, opts)
+map('n', '<leader>sr', builtin.resume, opts)
+map('n', '<leader>sd', builtin.diagnostics, opts)
+map('n', '<leader>hh', builtin.help_tags, opts)
+map('n', '<leader>ht', builtin.colorscheme, opts)
+map('n', '<leader>sp', function() builtin.live_grep { previewer = false } end, opts)
+map("n", "<leader>.", function()
+    builtin.find_files {
+        hidden = false,
+        previewer = false,
+        theme = 'ivy',
+        find_command = { 'rg', '--files', '--color', 'never' }
+    }
+end, opts)
+map('n', '<leader>s.', function()
+    builtin.live_grep {
+        grep_open_files = true,
+        prompt_title = 'Live Grep in Open Files',
+    }
+end, opts)
+map('n', '<leader>/', function()
+    builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 10,
+        previewer = false,
+    })
+end, opts)
 
--- TODO: move this from here to a fzf.lua dedicated file
-map('n', '<leader>ss', '<cmd>FzfLua grep_curbuf<cr>', opts)
-map('n', '<leader>sp', '<cmd>FzfLua grep_project<cr>', opts)
-map('n', '<leader>sP', '<cmd>FzfLua grep<cr>', opts)
-map('n', '<leader>gs', '<cmd>FzfLua git_status<cr>', opts)
-map('n', '<leader>gc', '<cmd>FzfLua git_commits<cr>', opts)
+-- Search Neovim config
+map('n', '<leader>sn', function()
+    builtin.find_files {
+        cwd = "~/.config/nvim",
+        -- cwd = vim.fn.stdpath 'config',
+        shorten_path = false,
+        prompt_title = 'NVIM',
+        layout_strategy = "horizontal",
+        layout_config = {
+            preview_width = 0.35,
+        },
+    }
+end, opts)
 
-require('telescope').setup({
-  defaults = {
-    -- path_display = { 'shorten' },
-    mappings = {
-      i = {
-        ["<C-x>"] = false,
-        ["<C-u>"] = false,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<esc>"] = actions.close,
-      },
-      n = {
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-j>"] = actions.move_selection_next,
-        ["v"] = actions.file_vsplit,
-        ["s"] = actions.file_split,
-      },
+map('n', '<leader>sc', function()
+    builtin.find_files {
+        cwd = '~/.dotfiles',
+        shorten_path = false,
+        prompt_title = 'Dotfiles',
+        layout_strategy = "horizontal",
+        layout_config = {
+            preview_width = 0.35,
+        },
+    }
+end, opts)
+
+
+
+
+
+require('telescope').setup {
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-x>"] = false,
+                ["<C-u>"] = false,
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<esc>"] = actions.close,
+            },
+            n = {
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-j>"] = actions.move_selection_next,
+                ["v"] = actions.file_vsplit,
+                ["s"] = actions.file_split,
+            },
+        },
     },
-    file_ignore_patterns = {
-      "vendor/*",
-      "%.lock",
-      ".nuxt/*",
-      "__pycache__/*",
-      ".mypy_cache/*",
-      "%.sqlite3",
-      "%.ipynb",
-      "node_modules/*",
-      ".git/*",
-      "%.webp",
-      ".github/",
-      ".gradle/",
-      ".idea/",
-      ".settings/",
-      ".vscode/*",
-      "__pycache__/",
-      "build/",
-      "env/",
-      "node_modules/",
-      "target/",
-      "%.pdb",
-      "%.dll",
-      "%.class",
-      "%.exe",
-      "%.cache",
-      "%.dylib",
-    },
-  },
-  pickers = {
-    oldfiles = {
-      sort_lastused = true,
-      cwd_only = true,
-      theme = "ivy",
-      previewer = false,
-    },
-    colorscheme = {
-      enable_preview = true,
-    },
-    help_tags = {
-      previewer = false
-    },
-    buffers = {
-      theme = "ivy",
-      previewer = false,
-    },
-    live_grep = {
-      theme = "ivy",
-      previewer = false,
-      -- path_display = { "shorten" },
-    },
-    find_files = {
-      previewer = false,
-      hidden = true,
-      theme = "ivy",
-      find_command = {
-        "rg",
-        "--files",
-        "--hidden",
-        "--color",
-        "never",
-      },
-    },
-  },
-  extensions = {
     fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
     },
-  },
-})
-require("telescope").load_extension("fzf")
+    extensions = {
+        ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+        }
+    }
+}
+
+pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'ui-select')
