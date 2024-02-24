@@ -8,5 +8,6 @@
     ++ [(import ../modules/tmux)]
     ++ [(import ../modules/rofi)]
     ++ [(import ../modules/alacritty)]
+    ++ [(import ../modules/wezterm)]
     ++ [(import ../modules/nvim)];
 }

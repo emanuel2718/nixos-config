@@ -35,7 +35,6 @@ in {
   xdg.configFile = {
     "i3/config".text = builtins.readFile ../modules/config/i3config;
     "i3status/config".text = builtins.readFile ../modules/config/i3status;
-    "wezterm/wezterm.lua".text = builtins.readFile ../modules/config/wezterm.lua;
     "fish/functions/fish_user_key_bindings.fish".text = builtins.readFile ../modules/fish/fish_user_key_bindings.fish;
   };
 
@@ -63,7 +62,6 @@ in {
       ripgrep
       rsync
       unzip
-      wezterm
       xclip
       valgrind
       zathura
