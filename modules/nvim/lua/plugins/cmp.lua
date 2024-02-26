@@ -22,6 +22,7 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<Enter>'] = cmp.mapping.confirm { select = true },
     ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-y]'] = nil, -- I know this is the 'vim way' but I use this for copilot suggestions now
     ["<C-h>"] = function()
       if cmp.visible_docs() then
         cmp.close_docs()

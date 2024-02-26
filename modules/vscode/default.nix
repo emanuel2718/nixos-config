@@ -55,6 +55,7 @@ in
       "editor.fontSize" = 16;
       # "editor.fontFamily" = "FiraCode Nerd Font";
       "editor.tabSize" = 2;
+      "window.zoomLevel" = 0;
       "editor.fontFamily" = "Terminess Nerd Font";
       "editor.accessibilitySupport" = "off";
       "editor.hover.sticky" = true;
@@ -148,18 +149,24 @@ in
       "vim.useCtrlKeys" = true;
       "vim.highlightedyank.enable" = true;
       "vim.highlightedyank.color" = "rgba(255, 140, 0, 0.5)";
-      "vim.normalModeKeyBindings" = [
+      "vim.normalModeKeyBindingsNonRecursive" = [
         { before = [ "K" ]; commands = [ "editor.action.showHover" ]; }
+        { before = ["g" "l"]; commands = ["editor.action.showDefinitionPreviewHover"]; } 
         { before = [ "<C-c>" ]; commands = [ "editor.action.quickFix" ]; }
         { before = [ "leader" "f" "s" ]; commands = [ "workbench.action.files.save" ]; }
         { before = [ "leader" "." ]; commands = [ "workbench.action.quickOpen" ]; }
         { before = [ "leader" "o" ]; commands = [ "workbench.action.closeEditorsInGroup" ]; }
         { before = [ "leader" "m" ]; commands = [ "workbench.action.splitEditor" ]; }
         { before = [ "leader" "n" ]; commands = [ "workbench.action.splitEditorDown" ]; }
+
         { before = [ "leader" "s" "i" ]; commands = [ "workbench.action.showAllSymbols" ]; }
         { before = [ "leader" "s" "p" ]; commands = [ "workbench.action.findInFiles" ]; }
         { before = [ "leader" "l" "f" ]; commands = [ "editor.action.format" ]; }
         { before = [ "leader" "h" "t" ]; commands = [ "workbench.action.selectTheme" ]; }
+        { before = [ "<S-h>" ]; commands = [ ":bprevious" ]; }
+        { before = [ "<S-l>" ]; commands = [ ":bnext" ]; }
+        { before = ["[" "d"]; commands = ["editor.action.marker.prev"]; }
+        { before = ["]" "d"]; commands = ["editor.action.marker.next"]; }
       ];
       "vim.visualModeKeyBindings" = [
         { before = [ ">" ]; commands = [ "editor.action.indentLines" ]; }
@@ -169,6 +176,22 @@ in
       ];
     };
     keybindings = [
+      { key = "ctrl+h"; command = "workbench.action.navigateLeft"; }
+      { key = "ctrl+l"; command = "workbench.action.navigateRight"; }
+
+      { key = "ctrl+k"; command = "workbench.action.navigateUp"; when = "!inQuickOpen || !suggestWidgetVisible || !codeActionMenuVisible"; }
+      { key = "ctrl+j"; command = "workbench.action.navigateDown"; when = "!inQuickOpen || !suggestWidgetVisible || !codeActionMenuVisible"; }
+
+      { key = "ctrl+k"; command = "workbench.action.quickOpenSelectPrevious"; when = "inQuickOpen"; }
+      { key = "ctrl+j"; command = "workbench.action.quickOpenSelectNext"; when = "inQuickOpen"; }
+
+      { key = "ctrl+k"; command = "selectPrevSuggestion"; when = "suggestWidgetVisible && textInputFocus"; }
+      { key = "ctrl+j"; command = "selectNextSuggestion"; when = "suggestWidgetVisible && textInputFocus"; }
+
+      { key = "ctrl+k"; command = "selectPrevCodeAction"; when = "codeActionMenuVisible"; }
+      { key = "ctrl+j"; command = "selectNextCodeAction"; when = "codeActionMenuVisible"; }
+
+
       { key = "ctrl+f"; command = "workbench.action.findInFiles"; }
       { key = "cmd+p"; command = "workbench.action.showCommands"; }
       { key = "cmd+c"; command = "editor.action.clipboardCopyAction"; }

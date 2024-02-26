@@ -8,7 +8,7 @@ map('n', '<leader>fo', function() builtin.oldfiles { previewer = false, sorting_
 map('n', '<leader>ss', builtin.builtin, opts)
 map('n', '<leader>sr', builtin.resume, opts)
 map('n', '<leader>sd', builtin.diagnostics, opts)
-map('n', '<leader>hh', builtin.help_tags, opts)
+map('n', '<leader>hh', function() builtin.help_tags { previewer = false } end, opts)
 map('n', '<leader>ht', builtin.colorscheme, opts)
 map('n', '<leader>sp', function() builtin.live_grep { previewer = false } end, opts)
 map("n", "<leader>.", function()
@@ -35,7 +35,7 @@ end, opts)
 -- Search Neovim config
 map('n', '<leader>sn', function()
     builtin.find_files {
-        cwd = "~/.config/nvim",
+        cwd = "~/.dotfiles/modules/nvim",
         -- cwd = vim.fn.stdpath 'config',
         shorten_path = false,
         prompt_title = 'NVIM',
@@ -59,7 +59,11 @@ map('n', '<leader>sc', function()
 end, opts)
 
 
-
+map('n', '<leader>bi', function()
+    builtin.buffers {
+      shorten_path = false,
+    }
+end, opts)
 
 
 require('telescope').setup {

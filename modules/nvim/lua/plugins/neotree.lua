@@ -47,7 +47,7 @@ local function recursively_open_nodes(state)
 end
 
 local map = vim.keymap.set
-map("n", "<C-n>", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true })
+map("n", "<C-e>", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true })
 require("window-picker").setup({
   hint = "floating-big-letter",
   filter_rules = {

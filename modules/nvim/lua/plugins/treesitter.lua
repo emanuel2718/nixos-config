@@ -1,7 +1,6 @@
-function check_file_size(lang, bufnr)
+local function check_file_size(_, bufnr)
   return vim.api.nvim_buf_line_count(bufnr) > 10000
 end
- 
 
 require('nvim-treesitter.configs').setup {
     highlight = {
@@ -11,6 +10,7 @@ require('nvim-treesitter.configs').setup {
     },
     indent = { enable = true },
     autopairs = { enable = true },
+  autotag = { enable = true },
     textobjects = {
       select = {
         enable = true,

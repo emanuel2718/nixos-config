@@ -78,6 +78,11 @@ let
       config = builtins.readFile lua/plugins/neotree.lua;
       type = "lua";
     };
+    toggleDiagnostics = {
+      plugin = clone "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" "main" "4fbfb51e3902d17613be0bc03035ce26b9a8d05d";
+      config = builtins.readFile lua/plugins/toggle-diagnostics.lua;
+      type = "lua";
+    };
     fterm = {
       plugin = vimPlugins.FTerm-nvim;
       config = ''
@@ -262,6 +267,9 @@ in {
 
       # Copilot
       fromConfigFile.copilot
+
+      # ToggleDiagnostics
+      fromConfigFile.toggleDiagnostics
     ];
   };
 }

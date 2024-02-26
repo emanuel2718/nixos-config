@@ -44,6 +44,7 @@ map("n", "<leader>q", "<cmd>qa!<cr>", opts)
 map("n", "<leader>fs", "<cmd>w!<cr>")
 map("n", "<leader>`", "<cmd>e #<cr>", opts)
 
+
 -- experimental
 map("n", "n", "nzz", opts)
 map("n", "N", "Nzz", opts)

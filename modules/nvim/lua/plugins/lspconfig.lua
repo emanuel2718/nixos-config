@@ -14,7 +14,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', '<leader>si', telescope_builtin.lsp_document_symbols, opts)
     map('n', '<leader>sI', telescope_builtin.lsp_dynamic_workspace_symbols, opts)
     map('n', 'K', vim.lsp.buf.hover, opts)
+    map('n', 'gl', function() vim.diagnostic.open_float {} end, opts)
     map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    map('n', '<leader>li', '<cmd>LspInfo<cr>', opts)
+    map('n', '<leader>lr', '<cmd>LspRestart<cr>', opts)
+    map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    map('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+    map('n', ']d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
     map('i', '<C-k>', vim.lsp.buf.signature_help, opts)
     map('n', '<C-c>', function()
       vim.lsp.buf.code_action { context = { only = { 'quickfix', 'refactor', 'source' } } }
@@ -55,6 +61,11 @@ lspconfig.rust_analyzer.setup {
 
 -- C++
 lspconfig.clangd.setup {
+  capabilities = capabilities,
+}
+
+-- Python
+lspconfig.pyright.setup {
   capabilities = capabilities,
 }
 
