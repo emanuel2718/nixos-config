@@ -5,7 +5,7 @@
     interactiveShellInit = lib.strings.concatStrings (lib.strings.intersperse "\n" ([
       "set -g fish_greeting"
       "fish_vi_key_bindings"
-      "set -Ux PROJECTS $HOME/dev"
+      "set -Ux PROJECTS $HOME/git"
       "set PATH $PATH $HOME/.local/bin"
       "set -x DIRENV_LOG_FORMAT ''"
     ]));

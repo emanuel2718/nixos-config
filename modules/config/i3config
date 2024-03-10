@@ -3,10 +3,10 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Main monitor
-set $mm HDMI-0
+set $mm DP-4
 
 # Second monitor
-set $sm DP-4
+set $sm HDMI-0
 
 set $mod Mod4
 
@@ -244,7 +244,6 @@ bindsym Ctrl+$mod+y exec --no-startup-id maim --window $(xdotool getactivewindow
 bindsym $mod+Shift+y exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 
-# bindsym $mod+x exec $HOME/dev/bin/i3-lock.sh
 bindsym $mod+x exec betterlockscreen -l dim
 
 # Focus Obsidian from anywhere
@@ -253,7 +252,8 @@ bindsym $mod+Shift+d [class="Chromium"] focus
 
 
 exec_always feh --bg-fill $HOME/Pictures/wallpaper.jpg
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 144 --output eDP-1-1 --off
+exec --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 144 --output HDMI-0 --rotate left --output eDP-1-1 --off
+# exec --no-startup-id xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 144 --output eDP-1-1 --off
 # exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
 # exec --no-startup-id xcape -e 'Caps_Lock=Escape'
 # exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
