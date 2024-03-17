@@ -14,7 +14,7 @@
     config.warn_about_missing_glyphs = false
 
 
-    config.font = wezterm.font 'FiraCode Nerd Font'
+    config.font = wezterm.font 'Terminess Nerd Font'
     config.font_size = 13.5
     config.color_scheme = 'Pastel White (terminal.sexy)'
 

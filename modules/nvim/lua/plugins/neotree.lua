@@ -130,6 +130,7 @@ require("neo-tree").setup({
     winbar = true,
   },
   window = {
+    position = "right",
     mappings = {
       ["h"] = "close_node",
       ["l"] = "open_node",

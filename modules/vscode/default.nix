@@ -8,14 +8,14 @@ let
       version = "1.8.27";
       sha256 = "sha256-6FktlAJmOD3dQNn2TV83ROw41NXZ/MgquB0RFQqwwW0=";
     };
-    vueTypescript = pkgs.vscode-utils.extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin
-      publisher = "Vue";
-      name = "vscode-typescript-vue-plugin";
-      version = "1.8.27";
-      sha256 = "sha256-ym1+WPKBcn4h9lqSFVehfiDoGUEviOSEVXVLhHcYvfc=";
+    # vueTypescript = pkgs.vscode-utils.extensionFromVscodeMarketplace {
+    #   # https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin
+    #   publisher = "Vue";
+    #   name = "vscode-typescript-vue-plugin";
+    #   version = "1.8.27";
+    #   sha256 = "sha256-ym1+WPKBcn4h9lqSFVehfiDoGUEviOSEVXVLhHcYvfc=";
 
-    };
+    # };
   };
 in
 {
@@ -39,7 +39,7 @@ in
       bradlc.vscode-tailwindcss
       ms-vscode.cpptools
       vscodePkgs.volar
-      vscodePkgs.vueTypescript
+      # vscodePkgs.vueTypescript
 
       # formatters and linters
       esbenp.prettier-vscode

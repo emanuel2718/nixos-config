@@ -45,6 +45,7 @@ in {
     packages = with pkgs; [
       _1password-gui
       btop
+      gh
       discord
       fd
       feh
@@ -80,6 +81,7 @@ in {
       libreoffice
       dunst
       betterlockscreen
+      sqlitebrowser
       # pulseaudio stuff
       pavucontrol
       paprefs
@@ -103,6 +105,7 @@ in {
       lua-language-server
       buf-language-server
       tailwindcss-language-server
+      inputs.gitu.packages.${system}.default
     ];
   };
 
