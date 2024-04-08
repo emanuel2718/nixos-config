@@ -62,9 +62,7 @@
     };
   };
 
-  # sets caps lock to escape+ctrl
-  # services.interception-tools.enable = true;
-
+  # set caps and left control (hhkb) to both Escape (tap) + Control (hold with another key)
   services.interception-tools = {
     enable = true;
     udevmonConfig = let
@@ -75,6 +73,9 @@
 
         MAPPINGS:
           - KEY: KEY_CAPSLOCK
+            TAP: KEY_ESC
+            HOLD: KEY_LEFTCTRL
+          - KEY: KEY_LEFTCTRL
             TAP: KEY_ESC
             HOLD: KEY_LEFTCTRL
       '';

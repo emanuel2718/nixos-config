@@ -70,9 +70,9 @@ lspconfig.pyright.setup {
 }
 
 -- Nix
-lspconfig.rnix.setup {
-  capabilities = capabilities,
-}
+-- lspconfig.rnix.setup {
+--   capabilities = capabilities,
+-- }
 
 -- Tailwindcss
 lspconfig.tailwindcss.setup {
