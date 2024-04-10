@@ -121,7 +121,7 @@
   users.users.rami = {
     isNormalUser = true;
     description = "rami";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
   };
 
   # Allow unfree packages
@@ -138,6 +138,20 @@
   programs.fish.enable = true;
 
   environment.localBinInPath = true;
+
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  # programs.dconf = {
+  #   enable = true;
+  #   settings = {
+  #     "org/virt-manager/virt-manager/connections" = {
+  #       autoconnect = ["qemu:///system"];
+  #       uris = ["qemu:///system"];
+  #     };
+  #   };
+  # };
+
 
   environment.systemPackages = with pkgs; [
     vim

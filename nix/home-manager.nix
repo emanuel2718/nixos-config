@@ -91,6 +91,7 @@ in {
       fira-code-nerdfont
       thunderbird
       github-desktop
+      qemu
 
       cmake-language-server
       nil

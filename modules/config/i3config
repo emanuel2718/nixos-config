@@ -8,8 +8,8 @@ set $mm DP-4
 # Second monitor
 set $sm HDMI-0
 
-# set $mod Mod4
-set $mod Mod1
+set $mod Mod4
+# set $mod Mod1
 
 # font xft:Terminess Nerd Font Mono 10
 # font xft:Hasklug Nerd Font Mono 10
