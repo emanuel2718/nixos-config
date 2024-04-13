@@ -7,9 +7,16 @@
         escapeTime = 10;
         baseIndex = 1;
         extraConfig = ''
-        setenv -g COLORTERM "truecolor"
-        set-option -g default-terminal "tmux-256color"
-        set -as terminal-features ",xterm-256color:RGB"
+        # setenv -g COLORTERM "truecolor"
+        # set-option -g default-terminal "tmux-256color"
+        # set -as terminal-features ",xterm-256color:RGB"
+
+
+        # set-option -ga terminal-overrides "alacritty:Tc"
+
+        set -g default-terminal "tmux-256color"
+        set -ga terminal-overrides ",xterm-256color*:Tc"
+
 
         set-option -g renumber-window on
         setw -g mode-keys vi

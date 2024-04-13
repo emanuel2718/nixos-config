@@ -8,6 +8,7 @@
       "set -Ux PROJECTS $HOME/git"
       "set PATH $PATH $HOME/.local/bin"
       "set -x DIRENV_LOG_FORMAT ''"
+      "function fish_mode_prompt; end"
     ]));
     shellAliases = {
       cal = "cal -y";

@@ -3,21 +3,25 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
+      cursor = {
+        style = {
+          shape = "Beam";
+        };
+      };
       colors = {
         primary = {
           background = "#000000";
         };
       };
       font = {
-        # normal = {
-        #   family = "Terminess Nerd Font";
-        #   style = "Regular";
-        # };
         normal = {
-          family = "FiraCode Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Regular";
         };
-        size = 10;
+        size = 12;
       };
       keyboard.bindings = [
         { key = "C"; mods = "Super"; action = "Copy"; }
