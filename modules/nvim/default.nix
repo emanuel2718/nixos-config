@@ -161,6 +161,17 @@ let
       '';
       type = "lua";
     };
+    gruvbox-material = {
+      plugin = pkgs.vimPlugins.gruvbox-material;
+      config = ''
+        vim.cmd[[
+          set background=dark
+          let g:gruvbox_material_background = 'hard'
+        ]]
+        vim.cmd.colorschem('gruvbox-material')
+      '';
+      type = "lua";
+    };
     gruberDarker = {
       plugin = clone "blazkowolf/gruber-darker.nvim" "main"
         "a2dda61d9c1225e16951a51d6b89795b0ac35cd6";
@@ -174,7 +185,7 @@ let
           },
           italic = {
             strings = false,
-            comments = true,
+            comments = false,
             operators = false,
             folds = true,
           },
@@ -228,7 +239,8 @@ in {
       fromConfigFile.cmp
 
       # Colorscheme
-      fromConfigFile.gruberDarker
+      # fromConfigFile.gruberDarker
+      fromConfigFile.gruvbox-material
 
       # Colorizer
       fromConfigFile.colorizer
