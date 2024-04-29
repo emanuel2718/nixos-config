@@ -79,6 +79,7 @@ in {
       gimp
       hyperfine
       libreoffice
+      libvirt-glib
       dunst
       betterlockscreen
       sqlitebrowser
