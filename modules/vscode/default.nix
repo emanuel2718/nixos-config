@@ -6,7 +6,7 @@ let
       publisher = "Vue";
       name = "volar";
       version = "1.8.27";
-      sha256 = "sha256-6FktlAJmOD3dQNn2TV83ROw41NXZ/MgquB0RFQqwwW0=";
+      sha256 = "sha256-KfWgdz61NURmS1cwFsE9AmIrEykyN5MXIKfG8gDfmac=";
     };
     # vueTypescript = pkgs.vscode-utils.extensionFromVscodeMarketplace {
     #   # https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin
@@ -132,7 +132,7 @@ in
         "editor.tabSize" = 2;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
-      "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
+      "nixfmt.path" = pkgs.nixfmt-classic + /bin/nixfmt;
       "[nix]" = {
         "editor.tabSize" = 2;
         "editor.indent_size" = 2;

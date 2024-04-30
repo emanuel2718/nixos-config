@@ -25,6 +25,11 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
+    displayManager = {
+      sessionCommands = ''
+      ${pkgs.xorg.xset}/bin/xset r rate 170 90
+      '';
+    };
     xkb = {
       layout = "us";
       variant = "";
@@ -34,15 +39,6 @@
     # autoRepeatDelay = 170;
     # autoRepeatInterval = 90;
     # xkb.options = "caps:escape";
-    displayManager = {
-      lightdm = {
-        enable = true;
-      };
-      defaultSession = "none+i3";
-      sessionCommands = ''
-      ${pkgs.xorg.xset}/bin/xset r rate 170 90
-      '';
-    };
     desktopManager = {
       xterm.enable = false;
       xfce = {
@@ -60,6 +56,13 @@
     windowManager = {
       i3.enable = true;
     };
+  };
+
+  services.displayManager = {
+      sddm = {
+        enable = true;
+      };
+      defaultSession = "none+i3";
   };
 
   # set caps and left control (hhkb) to both Escape (tap) + Control (hold with another key)
