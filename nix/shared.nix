@@ -26,6 +26,9 @@
   services.xserver = {
     enable = true;
     displayManager = {
+      lightdm = {
+        enable = true;
+      };
       sessionCommands = ''
       ${pkgs.xorg.xset}/bin/xset r rate 170 90
       '';
@@ -59,9 +62,6 @@
   };
 
   services.displayManager = {
-      sddm = {
-        enable = true;
-      };
       defaultSession = "none+i3";
   };
 
