@@ -1,12 +1,10 @@
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
+
 -- split windows
 map("n", "<leader>n", "<cmd>split<cr>", opts)
 map("n", "<leader>m", "<cmd>vsplit<cr>", opts)
-
--- close buffer
-map("n", "<leader>o", "<cmd>q<cr>", opts)
 
 -- window movement
 map("n", "<C-h>", "<C-w>h", opts)
@@ -35,20 +33,15 @@ map("n", "<leader>y", [["+Y]], opts)
 -- clear highlights
 map('n', '<Esc>', '<cmd>nohlsearch<cr>')
 
-
--- don't mess with the yank register on paste
-map("x", "p", [["_dP]])
-
--- General
+-- quit
 map("n", "<leader>q", "<cmd>qa!<cr>", opts)
+
+-- save
 map("n", "<leader>fs", "<cmd>w!<cr>")
+
+-- close buffer
+map("n", "<leader>o", "<cmd>q<cr>", opts)
+
+-- last buffer
 map("n", "<leader>`", "<cmd>e #<cr>", opts)
 
-
--- experimental
-map("n", "n", "nzz", opts)
-map("n", "N", "Nzz", opts)
-map("n", "*", "*zz", opts)
-map("n", "#", "#zz", opts)
-map("n", "g*", "g*zz", opts)
-map("n", "g#", "g#zz", opts)

@@ -13,11 +13,6 @@ let
 
   # TODO: move this to a sperate file
   fromConfigFile = with pkgs; {
-    telescope = {
-      plugin = vimPlugins.telescope-nvim;
-      config = builtins.readFile lua/plugins/telescope.lua;
-      type = "lua";
-    };
     comment = {
       plugin = vimPlugins.comment-nvim;
       config = builtins.readFile lua/plugins/comment.lua;
@@ -33,9 +28,9 @@ let
       config = builtins.readFile lua/plugins/fzf.lua;
       type = "lua";
     };
-    lspconfig = {
+    lsp = {
       plugin = vimPlugins.nvim-lspconfig;
-      config = builtins.readFile lua/plugins/lspconfig.lua;
+      config = builtins.readFile lua/plugins/lsp.lua;
       type = "lua";
     };
     tailwindColorizer = {
@@ -63,16 +58,6 @@ let
       config = builtins.readFile lua/plugins/lualine.lua;
       type = "lua";
     };
-    neogit = {
-      plugin = vimPlugins.neogit;
-      config = ''
-        vim.keymap.set('n', '<leader>g.', '<cmd>Neogit<cr>', { noremap = true, silent = true })
-        require('neogit').setup({
-          integrations = { diffview = true, fzf_lua = true }
-        })
-      '';
-      type = "lua";
-    };
     neotree = {
       plugin = vimPlugins.neo-tree-nvim;
       config = builtins.readFile lua/plugins/neotree.lua;
@@ -83,19 +68,18 @@ let
       config = builtins.readFile lua/plugins/toggle-diagnostics.lua;
       type = "lua";
     };
-    fterm = {
-      plugin = vimPlugins.FTerm-nvim;
+    toggleTerm = {
+      plugin = vimPlugins.toggleterm-nvim;
       config = ''
-        local map = vim.keymap.set
-        local opts = { noremap = true, silent = true }
-        require("FTerm").setup {
-          border = "solid",
-          blend = 10,
+        require('toggleterm').setup {
+          direction = 'float'
         }
-        map('n', "<C-t>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
-        map('t', "<C-t>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+        vim.keymap.set("n", "<C-t>", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
+        vim.keymap.set("t", "<C-t>", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
       '';
       type = "lua";
+
+
     };
     trouble = {
       plugin = vimPlugins.trouble-nvim;
@@ -108,14 +92,53 @@ let
     mini = {
       plugin = vimPlugins.mini-nvim;
       config = ''
-        require('mini.ai').setup { n_lines = 500 }
-        require('mini.surround').setup {}
+         local statusline = require 'mini.statusline'
+         statusline.setup { use_icons = vim.g.have_nerd_font }
+         statusline.section_location = function()
+           return '%2l:%-2v'
+         end
       '';
       type = "lua";
     };
     copilot = {
       plugin = vimPlugins.copilot-lua;
       config = builtins.readFile lua/plugins/copilot.lua;
+      type = "lua";
+    };
+    monokai = {
+      plugin = clone "tanvirtin/monokai.nvim" "master" "b8bd44d5796503173627d7a1fc51f77ec3a08a63";
+      config = ''
+       require('monokai').setup { 
+        italics = false,
+        palette = {
+          name = 'monokai',
+          base1 = '#272a30',
+          base2 = '#1E1E1E',
+          base3 = '#2E323C',
+          base4 = '#333842',
+          base5 = '#4d5154',
+          base6 = '#9ca0a4',
+          base7 = '#b1b1b1',
+          border = '#a1b5b1',
+          brown = '#504945',
+          white = '#f8f8f0',
+          grey = '#8F908A',
+          black = '#000000',
+          pink = '#f92672',
+          green = '#a6e22e',
+          aqua = '#66d9ef',
+          yellow = '#e6db74',
+          orange = '#fd971f',
+          purple = '#ae81ff',
+          red = '#e95678',
+          diff_add = '#3d5213',
+          diff_remove = '#4a0f23',
+          diff_change = '#27406b',
+          diff_text = '#23324d',
+        },
+        custom_hlgroups = {},
+      }
+      '';
       type = "lua";
     };
     conform = {
@@ -161,41 +184,6 @@ let
       '';
       type = "lua";
     };
-    gruvbox-material = {
-      plugin = pkgs.vimPlugins.gruvbox-material;
-      config = ''
-        vim.cmd[[
-          set background=dark
-          let g:gruvbox_material_background = 'hard'
-        ]]
-        vim.cmd.colorschem('gruvbox-material')
-      '';
-      type = "lua";
-    };
-    gruberDarker = {
-      plugin = clone "blazkowolf/gruber-darker.nvim" "main"
-        "a2dda61d9c1225e16951a51d6b89795b0ac35cd6";
-      config = ''
-        require('gruber-darker').setup {
-          bold = false,
-          invert = {
-            signs = false,
-            tabline = false,
-            visual = false,
-          },
-          italic = {
-            strings = false,
-            comments = false,
-            operators = false,
-            folds = true,
-          },
-          undercurl = true,
-          underline = true,
-        }
-        vim.cmd.colorscheme('gruber-darker')
-      '';
-      type = "lua";
-    };
   };
 in {
   programs.neovim = {
@@ -210,9 +198,9 @@ in {
       # Telescope
       vimPlugins.nvim-web-devicons
       vimPlugins.plenary-nvim
-      vimPlugins.telescope-fzf-native-nvim
-      vimPlugins.telescope-ui-select-nvim
-      fromConfigFile.telescope
+      # vimPlugins.telescope-fzf-native-nvim
+      # vimPlugins.telescope-ui-select-nvim
+      # fromConfigFile.telescope
 
       # Comment
       vimPlugins.nvim-ts-context-commentstring
@@ -225,9 +213,11 @@ in {
       fromConfigFile.fzfLua
 
       # LSP
+      vimPlugins.SchemaStore-nvim
       vimPlugins.neodev-nvim
       vimPlugins.fidget-nvim
-      fromConfigFile.lspconfig
+      vimPlugins.nvim-lsp-ts-utils
+      fromConfigFile.lsp
 
       # Completion
       vimPlugins.cmp-path
@@ -239,8 +229,7 @@ in {
       fromConfigFile.cmp
 
       # Colorscheme
-      # fromConfigFile.gruberDarker
-      fromConfigFile.gruvbox-material
+      fromConfigFile.monokai
 
       # Colorizer
       fromConfigFile.colorizer
@@ -254,8 +243,8 @@ in {
       fromConfigFile.conform
 
       # Neogit
-      vimPlugins.diffview-nvim
-      fromConfigFile.neogit
+      # vimPlugins.diffview-nvim
+      # fromConfigFile.neogit
 
       # GitSigns
       vimPlugins.gitsigns-nvim
@@ -272,7 +261,9 @@ in {
       fromConfigFile.neotree
 
       # Terminal
-      fromConfigFile.fterm
+      # fromConfigFile.fterm
+      fromConfigFile.toggleTerm
+      # vimPlugins.toggleterm-nvim
 
       # Trouble
       fromConfigFile.trouble

@@ -46,6 +46,7 @@ in {
       _1password-gui
       btop
       gh
+      bat
       discord
       fd
       feh
