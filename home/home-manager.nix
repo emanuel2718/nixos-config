@@ -15,14 +15,12 @@ in {
   home.file.".vimrc".text = builtins.readFile ../modules/dots/.vimrc;
   home.file.".xinitrc".text = builtins.readFile ../modules/dots/.xinitrc;
   home.file.".xsessionrc".text = ''xset r rate 170 90'';
-  # home.file.".local/bin/" = {
-  #     recursive = true;
-  #     source = ../bin;
-  #     target = ".local/bin";
-  #     executable = true;
-  # };
-
-
+  home.file.".local/bin/" = {
+      recursive = true;
+      source = ../bin;
+      target = ".local/bin";
+      executable = true;
+  };
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ../modules/xdg_config/i3config;
@@ -38,8 +36,6 @@ in {
       home-manager
 
       _1password-gui
-
-      # _1password-gui
       # btop
       # gh
       # bat
@@ -55,65 +51,74 @@ in {
       # maim
       mpv
       neofetch
-      # fastfetch
+      fastfetch
       ranger
       ripgrep
       # rsync
       unzip
       xclip
-      # valgrind
       zathura
-      # gnumake
       # zig
-      # gcc
-      # gdb
-      # nodejs
-      # bun
+
+      gcc
+      gdb
+      gnumake
+      valgrind
+
+      # rustup
+      # rustc
+      # cargo
+      # rustfmt
+      # clippy
+
       xcape
       obsidian
       chromium
       any-nix-shell # fish support for nix-shell
-      # gimp
-      # hyperfine
+      gimp
+      hyperfine
       # libreoffice
       # libvirt-glib
-      # dunst
+      dunst
       betterlockscreen
-      # sqlitebrowser
+      sqlitebrowser
       # # pulseaudio stuff
       # pavucontrol
       # paprefs
       # pasystray
-      # vlc
+      vlc
       terminus-nerdfont
       # fira-code-nerdfont
       # thunderbird
       github-desktop
       qemu
 
-      # cmake-language-server
-      # nil
-      # # rnix-lsp
-      # rust-analyzer
-      # clang-tools
-      # yarn
-      # nodePackages_latest.pnpm
-      # nodePackages_latest.pyright
-      # nodePackages.vim-language-server
-      # nodePackages.volar
-      # nodePackages.typescript-language-server
-      # lua-language-server
-      # buf-language-server
-      # tailwindcss-language-server
+      # Web Dev
+      nodejs
+      yarn
+      bun
+      nodePackages_latest.pnpm
+
+      # LSPs
+      nil
+      pyright
+      clang-tools
+      rust-analyzer
+      lua-language-server
+      yaml-language-server
+      tailwindcss-language-server
+      nodePackages.typescript-language-server
+      nodePackages.vim-language-server
+      nodePackages.volar
     ];
   };
 
   programs.zoxide.enable = true;
 
-  # programs.nix-index = {
-  #   enable = true;
-  #   enableFishIntegration = true;
-  # };
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 
 
    programs = {
