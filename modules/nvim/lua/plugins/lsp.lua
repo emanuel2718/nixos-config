@@ -16,6 +16,7 @@ local servers = {
   pyright = true,
   tailwindcss = true,
   tsserver = true,
+  gopls = true;
   jsonls = {
     settings = {
       json = {

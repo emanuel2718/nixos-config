@@ -24,7 +24,7 @@
       ta = "tmux a -t";
       tl = "tmux ls";
 
-      tt = "tmux-sessionizer";
+      tt = "sesh connect $(sesh list | fzf)";
 
       gs = "git status";
       gl = "git log";

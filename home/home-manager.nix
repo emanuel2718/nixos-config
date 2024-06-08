@@ -40,6 +40,8 @@ in {
       # gh
       # bat
       autorandr
+      tldr
+      sesh
       discord
       fd
       feh
