@@ -12,10 +12,12 @@ NixOS Config
 ```shell
 nix-shell -p vim git
 
-git clone https://github.com/emanuel2718/nixos-config.git $HOME/.dotfiles
-sudo cp /etc/nixos/hardware-configuration.nix $HOME/.dotfiles/hosts/<HOST>/hardware.nix
-cd $HOME/.dotfiles
-sudo nixos-rebuild switch --flake .#<HOST>
+mkdir -p $HOME/git/dotfiles
+git clone https://github.com/emanuel2718/nixos-config.git $HOME/git/dotfiles
+sudo cp /etc/nixos/hardware-configuration.nix $HOME/git/dotfiles/machines/<MACHINE>/hardware.nix
+
+cd $HOME/git/dotfiles
+sudo nixos-rebuild switch --flake .#<MACHINE>
 sudo reboot now
 ```
 
