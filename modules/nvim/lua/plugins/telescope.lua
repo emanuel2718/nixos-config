@@ -26,7 +26,7 @@ local builtin = require "telescope.builtin"
 local map = vim.keymap.set
 
 map("n", "<space>gt", builtin.git_files)
-map("n", "<space>gt", builtin.find_files)
+map("n", "<space>ff", builtin.find_files)
 map("n", "<leader>.", ':lua require"telescope.builtin".find_files({ hidden = true })<CR>')
 
 map("n", "<leader>fo", builtin.oldfiles)
