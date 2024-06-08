@@ -57,12 +57,6 @@
     };
   };
 
-  services.xserver.displayManager.setupCommands = ''
-    LAPTOP="eDP-1"
-    MAIN_MONITOR="DP-3"
-    SECOND_MONITOR="HDMI-1"
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $MAIN_MONITOR --primary --mode 2560x1440 --rate 144 --output $SECOND_MONITOR --mode 1920x1080 --output $LAPTOP --off
-  '';
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [

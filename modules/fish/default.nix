@@ -13,6 +13,7 @@
     shellAliases = {
       cal = "cal -y";
       pbcopy = "xclip -sel c";
+      i3config = "nvim ~/git/dotfiles/modules/xdg_config/i3config";
 
       cr = "cargo run";
       ct = "cargo test";
