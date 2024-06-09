@@ -1,33 +1,29 @@
-{ pkgs, user, inputs, lib, ... }:
-let
+{ pkgs, user, ... }: {
 
-in {
-
-  imports = [ (import ../modules { inherit pkgs; } ) ];
+  imports = [ (import ../modules { inherit pkgs; }) ];
 
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
   xdg.enable = true;
 
-
   # TODO: merge this to a nix modules
   home.file.".vimrc".text = builtins.readFile ../modules/dots/.vimrc;
   home.file.".xinitrc".text = builtins.readFile ../modules/dots/.xinitrc;
-  home.file.".xsessionrc".text = ''xset r rate 170 90'';
+  home.file.".xsessionrc".text = "xset r rate 170 90";
   home.file.".local/bin/" = {
-      recursive = true;
-      source = ../bin;
-      target = ".local/bin";
-      executable = true;
+    recursive = true;
+    source = ../bin;
+    target = ".local/bin";
+    executable = true;
   };
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ../modules/xdg_config/i3config;
     "i3status/config".text = builtins.readFile ../modules/xdg_config/i3status;
-    "fish/functions/fish_user_key_bindings.fish".text = builtins.readFile ../modules/fish/fish_user_key_bindings.fish;
+    "fish/functions/fish_user_key_bindings.fish".text =
+      builtins.readFile ../modules/fish/fish_user_key_bindings.fish;
   };
-
 
   home = {
     username = "${user}";
@@ -113,6 +109,7 @@ in {
       nodePackages.typescript-language-server
       nodePackages.vim-language-server
       nodePackages.volar
+      nixfmt-classic
     ];
   };
 
@@ -123,15 +120,13 @@ in {
     enableFishIntegration = true;
   };
 
-
-   programs = {
+  programs = {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
     fish.enable = true;
   };
-
 
   # programs.autorandr = {
   #   enable = true;

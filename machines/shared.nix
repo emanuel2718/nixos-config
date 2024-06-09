@@ -1,5 +1,4 @@
-{ pkgs, user, lib, inputs, nixpkgs, ... }:
-{
+{ pkgs, ... }: {
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -26,17 +25,14 @@
   services.xserver = {
     enable = true;
     displayManager = {
-      lightdm = {
-        enable = true;
-      };
+      lightdm = { enable = true; };
       sessionCommands = ''
-      ${pkgs.xorg.xset}/bin/xset r rate 170 90
+        ${pkgs.xorg.xset}/bin/xset r rate 170 90
       '';
     };
     xkb = {
       layout = "us";
       variant = "";
-
 
     };
     # autoRepeatDelay = 170;
@@ -50,20 +46,16 @@
         enableXfwm = false;
       };
       wallpaper = {
-          # NOTE: it will source $HOME/.background-image as the wallpaper by default
+        # NOTE: it will source $HOME/.background-image as the wallpaper by default
         mode = "fill";
         combineScreens = false;
       };
     };
 
-    windowManager = {
-      i3.enable = true;
-    };
+    windowManager = { i3.enable = true; };
   };
 
-  services.displayManager = {
-      defaultSession = "none+i3";
-  };
+  services.displayManager = { defaultSession = "none+i3"; };
 
   # set caps and left control (hhkb) to both Escape (tap) + Control (hold with another key)
   services.interception-tools = {
@@ -99,7 +91,7 @@
     XDG_CACHE_HOME = "\${HOME}/.local/cache";
     XDG_BIN_HOME = "\${HOME}/.local/bin";
     XDG_DATA_HOME = "\${HOME}/.local/share";
-    PATH = ["\${XDG_BIN_HOME}"];
+    PATH = [ "\${XDG_BIN_HOME}" ];
     XCURSOR_SIZE = "25";
   };
 
@@ -115,7 +107,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -136,12 +127,10 @@
     options = "--delete-older-than 30d";
   };
 
-
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
   environment.localBinInPath = true;
-
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
@@ -155,13 +144,7 @@
   #   };
   # };
 
-
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    wget
-    firefox-devedition
-  ];
+  environment.systemPackages = with pkgs; [ vim git wget firefox-devedition ];
 
   system.stateVersion = "24.05";
 

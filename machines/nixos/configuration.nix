@@ -1,11 +1,7 @@
-{ pkgs, config, nixpkgs, ... }: {
-  imports = [
-     ./hardware.nix
-     ../shared.nix
-   ];
+{ pkgs, config, ... }: {
+  imports = [ ./hardware.nix ../shared.nix ];
 
   networking.hostName = "nixos";
-
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -30,9 +26,7 @@
         FastConnectable = "true";
         Experimental = "true";
       };
-      Policy = {
-        AutoEnable = "true";
-      };
+      Policy = { AutoEnable = "true"; };
     };
   };
   services.blueman.enable = true;
@@ -40,9 +34,7 @@
   # Razer blade specific stuff
   hardware.openrazer.enable = true;
   boot.kernelParams = [ "button.lid_init_state=open" ];
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
-  };
+  services.xserver = { videoDrivers = [ "nvidia" ]; };
 
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -56,7 +48,6 @@
       intelBusId = "PCI:0:2:0";
     };
   };
-
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [

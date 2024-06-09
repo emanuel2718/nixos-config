@@ -1,4 +1,6 @@
-{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/release-24.05.tar.gz") { } }:
+{ pkgs ? import
+  (fetchTarball "https://github.com/NixOS/nixpkgs/archive/release-24.05.tar.gz")
+  { } }:
 
 pkgs.mkShell {
   nativeBuildInputs = with pkgs; [

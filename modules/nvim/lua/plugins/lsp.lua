@@ -16,7 +16,8 @@ local servers = {
   pyright = true,
   tailwindcss = true,
   tsserver = true,
-  gopls = true;
+  gopls = true,
+  nil_ls = true,
   jsonls = {
     settings = {
       json = {
@@ -108,6 +109,7 @@ require("conform").setup {
     typescript = { { "prettier" } },
     javascript = { { "prettier" } },
     vue = { { "prettier" } },
+    nix = { "nixfmt" },
   },
 }
 
