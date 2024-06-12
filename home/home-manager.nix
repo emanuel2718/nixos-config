@@ -57,6 +57,8 @@
       unzip
       xclip
       zathura
+      libreoffice
+
       # zig
 
       gcc
@@ -73,6 +75,7 @@
       xcape
       obsidian
       chromium
+      google-chrome
       any-nix-shell # fish support for nix-shell
       gimp
       hyperfine
