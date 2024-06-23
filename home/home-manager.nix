@@ -85,9 +85,9 @@
       betterlockscreen
       sqlitebrowser
       # # pulseaudio stuff
-      # pavucontrol
-      # paprefs
-      # pasystray
+      pavucontrol
+      paprefs
+      pasystray
       vlc
       terminus-nerdfont
       # fira-code-nerdfont
@@ -112,7 +112,7 @@
       nodePackages.typescript-language-server
       nodePackages.vim-language-server
       nodePackages.volar
-      nixfmt-classic
+      nixfmt-rfc-style
     ];
   };
 
