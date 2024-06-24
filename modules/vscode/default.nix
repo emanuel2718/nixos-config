@@ -6,7 +6,8 @@ let
       publisher = "Vue";
       name = "volar";
       version = "2.0.21";
-      sha256 = "sha256-6FktlAJmOD3dQNn2TV83ROw41NXZ/MgquB0RFQqwwW0=";
+      sha256 = "sha256-7GyCilXKo4YEuHxZJmglLKeS+67vSLem8aO4+NKLD5U=";
+
     };
   };
 in {
@@ -15,14 +16,30 @@ in {
       extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
 
+      # qol
+      editorconfig.editorconfig
+      christian-kohler.path-intellisense
+      github.copilot
+
+
       # theme
       jdinhlife.gruvbox
 
       # lsp
+      sumneko.lua
       bbenoist.nix
+      ms-python.python
+       ms-vscode.cpptools
+      rust-lang.rust-analyzer
+      bradlc.vscode-tailwindcss
+      vscodePkgs.volar
 
 
-      # formatters
+      # formatters/linters
+      esbenp.prettier-vscode
+      ms-python.isort
+      ms-python.black-formatter
+      dbaeumer.vscode-eslint
       brettm12345.nixfmt-vscode
     ];
     userSettings = {
