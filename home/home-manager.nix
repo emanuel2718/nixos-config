@@ -76,6 +76,7 @@
       obsidian
       chromium
       google-chrome
+      librewolf
       any-nix-shell # fish support for nix-shell
       gimp
       hyperfine
