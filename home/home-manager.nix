@@ -58,6 +58,7 @@
       xclip
       zathura
       libreoffice
+      slack
 
       # zig
 

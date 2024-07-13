@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -25,7 +26,9 @@
   services.xserver = {
     enable = true;
     displayManager = {
-      lightdm = { enable = true; };
+      lightdm = {
+        enable = true;
+      };
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 170 90
       '';
@@ -33,56 +36,66 @@
     xkb = {
       layout = "us";
       variant = "";
-
     };
     # autoRepeatDelay = 170;
     # autoRepeatInterval = 90;
     # xkb.options = "caps:escape";
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-      wallpaper = {
-        # NOTE: it will source $HOME/.background-image as the wallpaper by default
-        mode = "fill";
-        combineScreens = false;
-      };
-    };
 
-    windowManager = { i3.enable = true; };
+    # desktopManager = {
+    #   xterm.enable = false;
+    #   xfce = {
+    #     enable = true;
+    #     noDesktop = true;
+    #     enableXfwm = false;
+    #   };
+    #   wallpaper = {
+    #     # NOTE: it will source $HOME/.background-image as the wallpaper by default
+    #     mode = "fill";
+    #     combineScreens = false;
+    #   };
+    # };
+
+    # windowManager = { i3.enable = true; };
+  };
+  services.desktopManager = {
+    plasma6 = {
+      enable = true;
+    };
   };
 
-  services.displayManager = { defaultSession = "none+i3"; };
+  services.displayManager = {
+    defaultSession = "plasma";
+  };
+  # services.displayManager = { defaultSession = "none+i3"; };
 
   # set caps and left control (hhkb) to both Escape (tap) + Control (hold with another key)
   services.interception-tools = {
     enable = true;
-    udevmonConfig = let
-      dualFunctionKeysConfig = builtins.toFile "dual-function-keys.yaml" ''
-        TIMING:
-          TAP_MILLISEC: 200
-          DOUBLE_TAP_MILLISEC: 0
+    udevmonConfig =
+      let
+        dualFunctionKeysConfig = builtins.toFile "dual-function-keys.yaml" ''
+          TIMING:
+            TAP_MILLISEC: 200
+            DOUBLE_TAP_MILLISEC: 0
 
-        MAPPINGS:
-          - KEY: KEY_CAPSLOCK
-            TAP: KEY_ESC
-            HOLD: KEY_LEFTCTRL
-          - KEY: KEY_LEFTCTRL
-            TAP: KEY_ESC
-            HOLD: KEY_LEFTCTRL
+          MAPPINGS:
+            - KEY: KEY_CAPSLOCK
+              TAP: KEY_ESC
+              HOLD: KEY_LEFTCTRL
+            - KEY: KEY_LEFTCTRL
+              TAP: KEY_ESC
+              HOLD: KEY_LEFTCTRL
+        '';
+      in
+      ''
+        - JOB: |
+            ${pkgs.interception-tools}/bin/intercept -g $DEVNODE \
+              | ${pkgs.interception-tools-plugins.dual-function-keys}/bin/dual-function-keys -c ${dualFunctionKeysConfig} \
+              | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE
+          DEVICE:
+            EVENTS:
+              EV_KEY: [KEY_CAPSLOCK]
       '';
-    in ''
-      - JOB: |
-          ${pkgs.interception-tools}/bin/intercept -g $DEVNODE \
-            | ${pkgs.interception-tools-plugins.dual-function-keys}/bin/dual-function-keys -c ${dualFunctionKeysConfig} \
-            | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE
-        DEVICE:
-          EVENTS:
-            EV_KEY: [KEY_CAPSLOCK]
-    '';
   };
 
   # Set XDG environment
@@ -115,7 +128,11 @@
   users.users.rami = {
     isNormalUser = true;
     description = "rami";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+    ];
   };
 
   # Allow unfree packages
@@ -134,6 +151,7 @@
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+  programs.dconf.enable = true;
   # programs.dconf = {
   #   enable = true;
   #   settings = {
@@ -144,11 +162,18 @@
   #   };
   # };
 
-  environment.systemPackages = with pkgs; [ vim git wget firefox-devedition ];
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wget
+    firefox-devedition
+  ];
 
   system.stateVersion = "24.05";
 
   # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

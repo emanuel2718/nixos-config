@@ -2,7 +2,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 # exec_always --no-startup-id nvidia-settings --assign CurrentMetaMode="DP-4: nvidia-auto-select +2160+1420, HDMI-0: 3840x2160 +0+0 {rotation=right}"
-exec --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 144 --output HDMI-0 --mode 1920x1080 --rate 144 --rotate right --output eDP-1-1 --off
+exec --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 144 --output HDMI-0 --mode 1920x1080 --rate 144 --rotate right --right-of DP-4 --output eDP-1-1 --off
 
 # Main monitor
 set $mm DP-4

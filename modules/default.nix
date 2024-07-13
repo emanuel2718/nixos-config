@@ -8,5 +8,6 @@
     #++ [(import ../modules/rofi)]
     ++ [(import ../modules/nvim)]
     ++ [(import ../modules/vscode)]
+    ++ [(import ../modules/alacritty)]
     ++ [(import ../modules/wezterm)];
 }
