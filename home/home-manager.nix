@@ -46,6 +46,7 @@
       httpie
       jq
       rofi
+      dmenu
       # lazygit
       # maim
       mpv
@@ -59,6 +60,7 @@
       zathura
       libreoffice
       slack
+      zed-editor
 
       # zig
 
@@ -87,6 +89,7 @@
       betterlockscreen
       sqlitebrowser
       # # pulseaudio stuff
+      alsa-scarlett-gui
       pavucontrol
       paprefs
       pasystray
@@ -96,6 +99,8 @@
       # thunderbird
       github-desktop
       qemu
+      kdePackages.kalk
+      kdePackages.kolourpaint
 
       # Web Dev
       nodejs

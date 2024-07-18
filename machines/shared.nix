@@ -26,9 +26,6 @@
   services.xserver = {
     enable = true;
     displayManager = {
-      lightdm = {
-        enable = true;
-      };
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 170 90
       '';
@@ -37,36 +34,9 @@
       layout = "us";
       variant = "";
     };
-    # autoRepeatDelay = 170;
-    # autoRepeatInterval = 90;
-    # xkb.options = "caps:escape";
-
-    # desktopManager = {
-    #   xterm.enable = false;
-    #   xfce = {
-    #     enable = true;
-    #     noDesktop = true;
-    #     enableXfwm = false;
-    #   };
-    #   wallpaper = {
-    #     # NOTE: it will source $HOME/.background-image as the wallpaper by default
-    #     mode = "fill";
-    #     combineScreens = false;
-    #   };
-    # };
-
-    # windowManager = { i3.enable = true; };
-  };
-  services.desktopManager = {
-    plasma6 = {
-      enable = true;
-    };
   };
 
-  services.displayManager = {
-    defaultSession = "plasma";
-  };
-  # services.displayManager = { defaultSession = "none+i3"; };
+  services.displayManager.sddm.enable = true;
 
   # set caps and left control (hhkb) to both Escape (tap) + Control (hold with another key)
   services.interception-tools = {

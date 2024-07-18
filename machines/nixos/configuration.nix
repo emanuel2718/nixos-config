@@ -57,5 +57,28 @@
     # polychromatic
   ];
 
+  # DE
+  services.xserver.desktopManager = {
+    cinnamon = {
+      enable = true;
+    };
+  };
+
+  services.displayManager = {
+    defaultSession = "cinnamon";
+  };
+
+  # i3
+  # services.xserver.desktopManager = {
+  #   xfce = {
+  #     enable = true;
+  #     noDesktop = true;
+  #     enableXfwm = false;
+  #   };
+  #   windowManager = { i3.enable = true; };
+  # };
+  # services.displayManager = { defaultSession = "none+i3"; };
+
+
   system.stateVersion = "24.05";
 }
