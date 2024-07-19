@@ -59,13 +59,13 @@
 
   # DE
   services.xserver.desktopManager = {
-    cinnamon = {
+    xfce = {
       enable = true;
     };
   };
 
   services.displayManager = {
-    defaultSession = "cinnamon";
+    defaultSession = "xfce";
   };
 
   # i3

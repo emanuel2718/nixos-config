@@ -1,6 +1,12 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  gitClone = repo: ref: sha:
+  gitClone =
+    repo: ref: sha:
     pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = ref;
@@ -17,9 +23,13 @@ let
       config = builtins.readFile lua/plugins/colorscheme.lua;
       type = "lua";
     };
+    hybrid = {
+      plugin = gitClone "HoNamDuong/hybrid.nvim" "master" "8838621a2e299582a0af5b8b96d5515f27b5d058";
+      config = builtins.readFile lua/plugins/colorscheme.lua;
+      type = "lua";
+    };
     fugitive = {
-      plugin = gitClone "tpope/vim-fugitive" "master"
-        "4f59455d2388e113bd510e85b310d15b9228ca0d";
+      plugin = gitClone "tpope/vim-fugitive" "master" "4f59455d2388e113bd510e85b310d15b9228ca0d";
       type = "lua";
     };
     colorizer = {
@@ -53,15 +63,15 @@ let
       type = "lua";
     };
     cmp = {
-      plugin = gitClone "hrsh7th/nvim-cmp" "main"
-        "a110e12d0b58eefcf5b771f533fc2cf3050680ac";
+      plugin = gitClone "hrsh7th/nvim-cmp" "main" "a110e12d0b58eefcf5b771f533fc2cf3050680ac";
       # plugin = vimPlugins.nvim-cmp;
       config = builtins.readFile lua/plugins/cmp.lua;
       type = "lua";
     };
     toggle_lsp_diagnostics = {
-      plugin = gitClone "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" "main"
-        "afcacba44d86df4c3c9752b869e78eb838f55765";
+      plugin =
+        gitClone "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" "main"
+          "afcacba44d86df4c3c9752b869e78eb838f55765";
     };
     lsp = {
       plugin = vimPlugins.nvim-lspconfig;
@@ -69,8 +79,8 @@ let
       type = "lua";
     };
   };
-
-in {
+in
+{
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -83,7 +93,8 @@ in {
     '';
     plugins = with pkgs; [
       # Colorscheme
-      fromConfigFile.gruvbox
+      # fromConfigFile.gruvbox
+      fromConfigFile.hybrid
 
       # Colorizer
       fromConfigFile.colorizer

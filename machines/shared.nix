@@ -26,6 +26,9 @@
   services.xserver = {
     enable = true;
     displayManager = {
+      lightdm = {
+        enable = true;
+      };
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 170 90
       '';
@@ -36,7 +39,7 @@
     };
   };
 
-  services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.enable = true;
 
   # set caps and left control (hhkb) to both Escape (tap) + Control (hold with another key)
   services.interception-tools = {
