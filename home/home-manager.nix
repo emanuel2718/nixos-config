@@ -119,7 +119,13 @@
       nodePackages.typescript-language-server
       nodePackages.vim-language-server
       nodePackages.volar
+
+      # Formatters
       nixfmt-rfc-style
+      isort
+      black
+      stylua
+      prettierd
     ];
   };
 
