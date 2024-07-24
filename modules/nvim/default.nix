@@ -32,6 +32,11 @@ let
       plugin = gitClone "tpope/vim-fugitive" "master" "4f59455d2388e113bd510e85b310d15b9228ca0d";
       type = "lua";
     };
+    autopairs = {
+      plugin = vimPlugins.nvim-autopairs;
+      config = builtins.readFile lua/plugins/autopairs.lua;
+      type = "lua";
+    };
     colorizer = {
       plugin = vimPlugins.nvim-colorizer-lua;
       config = builtins.readFile lua/plugins/colorizer.lua;
@@ -92,6 +97,10 @@ in
       ${builtins.readFile lua/core/autocmds.lua}
     '';
     plugins = with pkgs; [
+
+      # Autopairs
+      fromConfigFile.autopairs
+
       # Colorscheme
       # fromConfigFile.gruvbox
       fromConfigFile.hybrid

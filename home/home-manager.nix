@@ -10,7 +10,8 @@
   # TODO: merge this to a nix modules
   home.file.".vimrc".text = builtins.readFile ../modules/dots/.vimrc;
   home.file.".xinitrc".text = builtins.readFile ../modules/dots/.xinitrc;
-  home.file.".xsessionrc".text = "xset r rate 170 90";
+  home.file.".xsession".text = builtins.readFile ../modules/dots/.xsession;
+  # home.file.".xsessionrc".text = "xset r rate 170 90";
   home.file.".local/bin/" = {
     recursive = true;
     source = ../bin;

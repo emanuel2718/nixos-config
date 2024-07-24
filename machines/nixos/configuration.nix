@@ -58,25 +58,28 @@
   ];
 
   # DE
-  services.xserver.desktopManager = {
-    xfce = {
-      enable = true;
-    };
-  };
+  # services.xserver.desktopManager = {
+  #   xfce = {
+  #     enable = true;
+  #   };
+  # };
+
+  services.desktopManager.plasma6.enable = true;
 
   services.displayManager = {
-    defaultSession = "xfce";
+    defaultSession = "plasma";
   };
 
   # i3
   # services.xserver.desktopManager = {
-  #   xfce = {
+  #   xfce = e
   #     enable = true;
-  #     noDesktop = true;
+  #     # noDesktop = true;
   #     enableXfwm = false;
   #   };
-  #   windowManager = { i3.enable = true; };
   # };
+  # services.xserver.windowManager = { i3.enable = true; };
+  #
   # services.displayManager = { defaultSession = "none+i3"; };
 
 

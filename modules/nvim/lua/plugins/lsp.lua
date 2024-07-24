@@ -18,6 +18,7 @@ local servers = {
   tsserver = true,
   gopls = true,
   nil_ls = true,
+  html = true;
   jsonls = {
     settings = {
       json = {
