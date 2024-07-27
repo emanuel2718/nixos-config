@@ -61,7 +61,7 @@
       zathura
       libreoffice
       slack
-      zed-editor
+      mullvad-vpn
 
       # zig
 
