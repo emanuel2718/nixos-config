@@ -52,6 +52,11 @@ let
       config = builtins.readFile lua/plugins/neotree.lua;
       type = "lua";
     };
+    oil = {
+      plugin = vimPlugins.oil-nvim;
+      config = builtins.readFile lua/plugins/oil.lua;
+      type = "lua";
+    };
     lualine = {
       plugin = vimPlugins.lualine-nvim;
       config = builtins.readFile lua/plugins/lualine.lua;
@@ -127,6 +132,9 @@ in
 
       # Lualine
       fromConfigFile.lualine
+
+      # Oil
+      fromConfigFile.oil
 
       # Treesitter
       vimPlugins.nvim-treesitter.withAllGrammars

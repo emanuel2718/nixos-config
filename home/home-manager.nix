@@ -54,6 +54,7 @@
       neofetch
       fastfetch
       ranger
+      yazi
       ripgrep
       # rsync
       unzip
@@ -95,8 +96,12 @@
       paprefs
       pasystray
       vlc
+
+      # fonts
       terminus-nerdfont
+      fixedsys-excelsior
       # fira-code-nerdfont
+
       # thunderbird
       github-desktop
       qemu
