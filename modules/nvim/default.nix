@@ -88,11 +88,17 @@ let
       config = builtins.readFile lua/plugins/lsp.lua;
       type = "lua";
     };
+    copilot = {
+      plugin = vimPlugins.copilot-lua;
+      config = builtins.readFile lua/plugins/copilot.lua;
+      type = "lua";
+    };
   };
 in
 {
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     viAlias = true;
     # package = pkgs.neovim-nightly.overrideAttrs (_: { CFLAGS = "-O3"; });
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
@@ -180,6 +186,9 @@ in
       vimPlugins.SchemaStore-nvim
       fromConfigFile.toggle_lsp_diagnostics
       fromConfigFile.lsp
+
+      # Copilot
+      fromConfigFile.copilot
     ];
   };
 }

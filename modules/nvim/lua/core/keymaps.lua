@@ -44,6 +44,9 @@ map("n", "<leader>`", "<cmd>e #<cr>")
 
 map("n", "<leader>x", "<cmd>source %<CR>") -- execute current file
 
+-- Git Client (Fugitive)
+map("n", "<leader>g.", "<cmd>Git<CR>") -- execute current file
+
 -- Toggle hlsearch if it's on, otherwise do "enter"
 map("n", "<Esc>", function()
   ---@diagnostic disable-next-line: undefined-field
