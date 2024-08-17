@@ -5,6 +5,7 @@
     [
       ../shared.nix
       ./hardware-configuration.nix
+      # ../../modules/i3
     ];
 
   # Bootloader.
@@ -23,8 +24,11 @@
 
   # Enable KDE Plasma
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  # Enable i3
+  # Uncomment the i3 import on the `imports`
 
   # Configure keymap in X11
   services.xserver = {

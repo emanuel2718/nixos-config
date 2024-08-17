@@ -1,16 +1,28 @@
 { inputs, pkgs, lib, ... }:
 let 
   gitClone =
-      repo: ref: sha:
-      pkgs.vimUtils.buildVimPlugin {
-        pname = "${lib.strings.sanitizeDerivationName repo}";
-        version = ref;
-        src = builtins.fetchGit {
-          url = "http://github.com/${repo}.git";
-          ref = ref;
-          rev = sha;
-        };
+    repo: ref: sha:
+    pkgs.vimUtils.buildVimPlugin {
+      pname = "${lib.strings.sanitizeDerivationName repo}";
+      version = ref;
+      src = builtins.fetchGit {
+        url = "http://github.com/${repo}.git";
+        ref = ref;
+        rev = sha;
       };
+    };
+
+  gitCloneIt = with pkgs; {
+    hybrid = {
+      plugin = gitClone "HoNamDuong/hybrid.nvim" "master" "8838621a2e299582a0af5b8b96d5515f27b5d058";
+    };
+  };
+
+  readLuaFiles = dir: builtins.concatStringsSep "\n" (
+    builtins.map (file: builtins.readFile "${dir}/${file}") (
+        builtins.attrNames (builtins.readDir dir)
+      )
+    );
 in
 {
   programs.neovim = {
@@ -18,24 +30,59 @@ in
     defaultEditor = true;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     plugins = with pkgs; [
+      # Autopairs
       vimPlugins.nvim-autopairs
+
+      # Colorizer
       vimPlugins.nvim-colorizer-lua
+
+      # Term
       vimPlugins.toggleterm-nvim
+
+      # Colorscheme
+      vimPlugins.gruvbox-community
+      gitCloneIt.hybrid
+
+      # Neotree
+      vimPlugins.nvim-web-devicons
+      vimPlugins.nvim-window-picker
+      vimPlugins.neo-tree-nvim
+
+      # Lualine
+      vimPlugins.lualine-nvim
+
+      # Gitsigns
+      vimPlugins.gitsigns-nvim
+
+      # Fzf
+      vimPlugins.fzf-lua
+
+      # Treesitter
+      vimPlugins.nvim-treesitter
+      vimPlugins.nvim-treesitter-textobjects
+      vimPlugins.nvim-treesitter-parsers.c
+      vimPlugins.nvim-treesitter-parsers.cpp
+      vimPlugins.nvim-treesitter-parsers.css
+      vimPlugins.nvim-treesitter-parsers.lua
+      vimPlugins.nvim-treesitter-parsers.vue
+      vimPlugins.nvim-treesitter-parsers.vim
+      vimPlugins.nvim-treesitter-parsers.tsx
+      vimPlugins.nvim-treesitter-parsers.javascript
+      vimPlugins.nvim-treesitter-parsers.typescript
+      vimPlugins.nvim-treesitter-parsers.go
+      vimPlugins.nvim-treesitter-parsers.zig
+      vimPlugins.nvim-treesitter-parsers.sql
+      vimPlugins.nvim-treesitter-parsers.nix
+      vimPlugins.nvim-treesitter-parsers.yaml
+      vimPlugins.nvim-treesitter-parsers.toml
+      vimPlugins.nvim-treesitter-parsers.rust
+      vimPlugins.nvim-treesitter-parsers.html
+      vimPlugins.nvim-treesitter-parsers.bash
+      vimPlugins.nvim-treesitter-parsers.python
     ];
     extraLuaConfig = ''
-      local map = vim.keymap.set
-
-      -- Autopairs
-      require('nvim-autopairs').setup()
-
-      -- Colorizer
-      require('colorizer').setup()
-
-      -- Term
-      require('toggleterm').setup({ direction = 'float' })
-      map("n", "<C-t>", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
-      map("t", "<C-t>", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
-
+      ${readLuaFiles ./lua/core}
+      ${readLuaFiles ./lua/plugins}
     '';
   };
 }

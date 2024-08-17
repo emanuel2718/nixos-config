@@ -82,9 +82,11 @@
       # LSP
       nil
       pyright
+      lua-language-server
 
       # Formatters
       nixfmt-rfc-style
+      stylua
       isort
       black
     ];
