@@ -14,7 +14,7 @@ let
       specialArgs = { inherit inputs user pkgs; };
       modules = [
         ./${hostName}/configuration.nix
-        ./${hostName}/hardware-configuration.nix
+        ./${hostName}/hardware.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
