@@ -5,6 +5,7 @@
     [
       ../shared.nix
       ./hardware-configuration.nix
+      ../../modules/system/fonts.nix
       # ../../modules/i3
     ];
 
