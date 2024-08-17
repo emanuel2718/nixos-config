@@ -18,6 +18,10 @@
 
   systemd.sleep.extraConfig = "HibernateDelaySec=4h";
 
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  programs.dconf.enable = true;
+
   networking.hostName = "blade";
 
   # Enable the X11 windowing system.

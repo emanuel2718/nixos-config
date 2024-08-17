@@ -55,6 +55,7 @@
 
       # CLI tools
       rofi
+      sesh
       xclip
       yazi
       fd
