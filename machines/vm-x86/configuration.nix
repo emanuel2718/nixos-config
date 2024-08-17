@@ -4,7 +4,7 @@
   imports =
     [
       ../shared.nix
-      ./hardware-configuration.nix
+      ./hardware.nix
       ../../modules/system/fonts.nix
       # ../../modules/i3
     ];

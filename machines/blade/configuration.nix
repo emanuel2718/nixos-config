@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ../shared.nix
     # ../../modules/i3
     ../../modules/system/fonts.nix
