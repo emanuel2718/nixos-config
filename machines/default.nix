@@ -28,7 +28,7 @@ let
       ];
     };
 in {
+  blade = makeSystem "blade";
   vm-x86 = makeSystem "vm-x86";
   # x220 = makeSystem "x220";
-  # blade = makeSystem "blade";
 }
