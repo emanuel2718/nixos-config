@@ -48,6 +48,7 @@
       xfce.thunar
       zed-editor
       vscode
+      qemu
 
       # Terminal
       alacritty
@@ -65,6 +66,7 @@
       neofetch
       httpie
       any-nix-shell # fish support for nix-shell
+      libvirt-glib
       zoxide
 
       # Dev
