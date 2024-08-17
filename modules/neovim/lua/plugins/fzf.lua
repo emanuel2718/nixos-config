@@ -16,7 +16,8 @@ fzf.setup({
 })
 
 map('n', '<leader>.', fzf.files)
-map('n', '<leader>>', fzf.oldfiles)
+map('n', '<leader>fo', fzf.oldfiles)
+map('n', '<leader>sp', fzf.live_grep)
 map('n', '<leader><leader>', fzf.buffers)
 
 map('n', '<leader>r.', fzf.resume)
