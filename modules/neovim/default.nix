@@ -16,6 +16,9 @@ let
     hybrid = {
       plugin = gitClone "HoNamDuong/hybrid.nvim" "master" "8838621a2e299582a0af5b8b96d5515f27b5d058";
     };
+    cmp = {
+      plugin = gitClone "hrsh7th/nvim-cmp" "main" "ae644feb7b67bf1ce4260c231d1d4300b19c6f30";
+    };
   };
 
   readLuaFiles = dir: builtins.concatStringsSep "\n" (
@@ -44,9 +47,12 @@ in
       gitCloneIt.hybrid
 
       # Neotree
-      vimPlugins.nvim-web-devicons
+      # vimPlugins.nvim-web-devicons
       vimPlugins.nvim-window-picker
       vimPlugins.neo-tree-nvim
+
+      # Oil
+      vimPlugins.oil-nvim
 
       # Lualine
       vimPlugins.lualine-nvim
@@ -79,6 +85,26 @@ in
       vimPlugins.nvim-treesitter-parsers.html
       vimPlugins.nvim-treesitter-parsers.bash
       vimPlugins.nvim-treesitter-parsers.python
+
+      # Copilot
+      vimPlugins.copilot-lua
+
+      # Completion
+      gitCloneIt.cmp
+      vimPlugins.luasnip
+      vimPlugins.lspkind-nvim
+      vimPlugins.cmp-nvim-lsp
+      vimPlugins.cmp-path
+      vimPlugins.cmp-buffer
+      vimPlugins.cmp_luasnip
+
+      # LSP
+      vimPlugins.nvim-lspconfig
+      vimPlugins.neodev-nvim
+      vimPlugins.trouble-nvim
+      vimPlugins.fidget-nvim
+      vimPlugins.conform-nvim
+      vimPlugins.SchemaStore-nvim
     ];
     extraLuaConfig = ''
       ${readLuaFiles ./lua/core}
