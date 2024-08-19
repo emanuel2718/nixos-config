@@ -8,6 +8,7 @@
     ./neovim
     ./vscode
     ./alacritty
+    ./wezterm
   ];
 }
 

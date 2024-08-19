@@ -39,6 +39,9 @@ map("n", "<leader>fs", "<cmd>w!<cr>")
 -- close buffer
 map("n", "<leader>o", "<cmd>q<cr>")
 
+-- send nvim to the background. easier to hit <c-g> than <c-z>
+map('n', '<C-g>', '<C-z>')
+
 -- last buffer
 map("n", "<leader>`", "<cmd>e #<cr>")
 

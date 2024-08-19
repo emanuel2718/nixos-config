@@ -72,6 +72,7 @@ in
       vimPlugins.nvim-treesitter-parsers.lua
       vimPlugins.nvim-treesitter-parsers.vue
       vimPlugins.nvim-treesitter-parsers.vim
+      vimPlugins.nvim-treesitter-parsers.vimdoc
       vimPlugins.nvim-treesitter-parsers.tsx
       vimPlugins.nvim-treesitter-parsers.javascript
       vimPlugins.nvim-treesitter-parsers.typescript
@@ -85,6 +86,7 @@ in
       vimPlugins.nvim-treesitter-parsers.html
       vimPlugins.nvim-treesitter-parsers.bash
       vimPlugins.nvim-treesitter-parsers.python
+      vimPlugins.nvim-treesitter-parsers.query
 
       # Copilot
       vimPlugins.copilot-lua

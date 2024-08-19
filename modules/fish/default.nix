@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
@@ -7,6 +7,7 @@
       fish_vi_key_bindings
       set -x DIRENV_LOG_FORMAT ""
       function fish_mode_prompt; end
+      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';
     shellAliases = {
       pbcopy = "xclip -sel c";

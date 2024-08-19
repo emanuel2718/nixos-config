@@ -71,12 +71,16 @@
 
       set-option -g status-right ""
       set-option -g status-left-length 100
-      set-option -g status-left " #{session_name}  "
-      set-option -g status-style "fg=#7C7D83 bg=default" # default will set the background to transparent
-      set-option -g window-status-format "#{window_index}:#{window_name}#{window_flags} " # window_name -> pane_current_command
-      set-option -g window-status-current-format "#{window_index}:#{window_name}#{window_flags} "
-      set-option -g window-status-current-style "fg=#dcc7a0"
-      set-option -g window-status-activity-style none
+      set-option -g status-left "[#{session_name}] "
+      set-option -g status-bg "#0000FF"
+      set-option -g status-fg "#FFFFFF"
+
+
+      # set-option -g status-style "fg=#7C7D83 bg=default" # default will set the background to transparent
+      # set-option -g window-status-format "#{window_index}:#{window_name}#{window_flags} " # window_name -> pane_current_command
+      # set-option -g window-status-current-format "#{window_index}:#{window_name}#{window_flags} "
+      # set-option -g window-status-current-style "fg=#dcc7a0"
+      # set-option -g window-status-activity-style none
     '';
   };
 }
