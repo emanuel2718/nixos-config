@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   services.libinput.enable = true;
   services.displayManager.defaultSession = "xfce+i3";
@@ -27,9 +27,6 @@
         i3status
         i3lock
       ];
-      extraConfig = ''
-        
-      '';
     };
   };
 }

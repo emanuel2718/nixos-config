@@ -21,8 +21,8 @@
   };
 
   xdg.configFile = {
-    # "i3/config".text = builtins.readFile ../modules/xdg_config/i3config;
-    # "i3status/config".text = builtins.readFile ../modules/xdg_config/i3status;
+    "i3/config".text = builtins.readFile ../xdg_config/i3config;
+    "i3status/config".text = builtins.readFile ../xdg_config/i3status;
     "fish/functions/fish_user_key_bindings.fish".text = builtins.readFile ../modules/fish/fish_user_key_bindings.fish;
   };
 
@@ -50,7 +50,6 @@
       google-chrome
       discord
       brave
-      firefox-devedition
       libreoffice
       xfce.thunar
       zed-editor
