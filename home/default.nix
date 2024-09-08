@@ -53,6 +53,8 @@
       libreoffice
       xfce.thunar
       zed-editor
+      xcolor
+      kdePackages.kcolorchooser
       vscode
       gimp
       qemu
@@ -79,6 +81,7 @@
       lazygit
       libvirt-glib
       zoxide
+      kakoune
 
       # Dev
       gcc

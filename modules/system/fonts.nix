@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  nerdFonts = [ "JetBrainsMono" "Iosevka" ];
+  nerdFonts = [ "JetBrainsMono" "Iosevka" "Terminus" ];
 in
 {
   i18n.defaultLocale = "en_US.UTF-8";

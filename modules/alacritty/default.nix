@@ -3,6 +3,14 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      colors = {
+        primary = {
+          background = "#111111";
+        };
+      };
+      font = {
+        normal = { family = "Terminess Nerd Font"; style = "Regular"; };
+      };
       cursor = {
         style = "Beam";
       };
