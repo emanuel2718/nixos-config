@@ -3,7 +3,7 @@
   imports = [
     ./hardware.nix
     ../shared.nix
-    ../../modules/i3
+    # ../../modules/i3
     ../../modules/system/fonts.nix
     ../../modules/system/bluetooth.nix
     ../../modules/system/sound.nix
@@ -34,7 +34,7 @@
   # Enable KDE Plasma
   services.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  # services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Enable i3
   # Uncomment the i3 import on the `imports`

@@ -32,7 +32,7 @@
     sessionVariables = {
       TERMINAL = lib.mkDefault "alacritty";
       COLORTERM = lib.mkDefault "truecolor";
-      BROWSER = lib.mkDefault "firefox";
+      BROWSER = lib.mkDefault "brave";
       NIX_SHELL_PRESERVE_PROMPT=1;
     };
     packages = with pkgs; [
@@ -76,6 +76,7 @@
       neofetch
       httpie
       any-nix-shell # fish support for nix-shell
+      lazygit
       libvirt-glib
       zoxide
 
@@ -121,4 +122,14 @@
 
   # TODO: move this to modules maybe(?)
   programs.zoxide.enable = true;
+
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }

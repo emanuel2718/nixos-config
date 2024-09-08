@@ -12,7 +12,7 @@ fzf.setup({
     border = "rounded",
     winblend = 10,
   },
-  files = { formatter = "path.filename_first" },
+  -- files = { formatter = "path.filename_first" },
 })
 
 map('n', '<leader>.', fzf.files)
@@ -22,3 +22,4 @@ map('n', '<leader><leader>', fzf.buffers)
 
 map('n', '<leader>r.', fzf.resume)
 map('n', '<leader>hh', fzf.helptags)
+map('n', '<leader>ht', fzf.colorschemes)

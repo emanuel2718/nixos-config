@@ -72,8 +72,8 @@
       set-option -g status-right ""
       set-option -g status-left-length 100
       set-option -g status-left "[#{session_name}] "
-      set-option -g status-bg "#0000FF"
-      set-option -g status-fg "#FFFFFF"
+      # set-option -g status-bg "#0000FF"
+      # set-option -g status-fg "#FFFFFF"
 
 
       # set-option -g status-style "fg=#7C7D83 bg=default" # default will set the background to transparent

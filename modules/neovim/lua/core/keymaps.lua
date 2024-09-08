@@ -46,7 +46,7 @@ map('n', '<C-g>', '<C-z>')
 map("n", "<leader>`", "<cmd>e #<cr>")
 
 -- Git Client (Fugitive)
-map("n", "<leader>g.", "<cmd>Git<CR>") -- execute current file
+map("n", "<leader>g.", "<cmd>Git<CR>")
 
 -- Toggle hlsearch if it's on, otherwise do "enter"
 map("n", "<Esc>", function()

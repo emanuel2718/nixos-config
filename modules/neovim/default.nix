@@ -43,6 +43,7 @@ in
       vimPlugins.toggleterm-nvim
 
       # Colorscheme
+      vimPlugins.base16-nvim
       vimPlugins.gruvbox-community
       gitCloneIt.hybrid
 

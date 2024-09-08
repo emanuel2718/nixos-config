@@ -11,6 +11,14 @@ local colorGruvbox = function()
   vim.g.gruvbox_invert_selection = 0
 end
 
+local colorBase16 = function()
+  -- gruvbox-dark-hard
+  -- apathy
+  -- vulcan
+  -- vim.cmd [[ colorscheme base16-gruvbox-dark-hard  ]]
+  vim.cmd [[ colorscheme base16-black-metal-gorgoroth  ]]
+end
+
 
 local highlight = function()
   -- blue highlight in cmp menu
@@ -66,4 +74,5 @@ local colorHybrid = function()
 end
 
 colorHybrid()
+-- colorBase16()
 highlight()
