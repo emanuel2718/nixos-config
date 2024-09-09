@@ -18,6 +18,7 @@ fzf.setup({
 map('n', '<leader>.', fzf.files)
 map('n', '<leader>fo', fzf.oldfiles)
 map('n', '<leader>sp', fzf.live_grep)
+map('n', '<leader>si', fzf.lsp_document_symbols)
 map('n', '<leader><leader>', fzf.buffers)
 
 map('n', '<leader>r.', fzf.resume)

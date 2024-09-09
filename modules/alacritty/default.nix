@@ -9,7 +9,8 @@
         };
       };
       font = {
-        normal = { family = "Terminess Nerd Font"; style = "Regular"; };
+        # normal = { family = "Terminess Nerd Font"; style = "Regular"; };
+        normal = { family = "FreeMono"; style = "Regular"; };
       };
       cursor = {
         style = "Beam";

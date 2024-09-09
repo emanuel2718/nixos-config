@@ -15,8 +15,8 @@ local colorBase16 = function()
   -- gruvbox-dark-hard
   -- apathy
   -- vulcan
-  -- vim.cmd [[ colorscheme base16-gruvbox-dark-hard  ]]
-  vim.cmd [[ colorscheme base16-black-metal-gorgoroth  ]]
+  vim.cmd [[ colorscheme base16-gruvbox-dark-hard  ]]
+  -- vim.cmd [[ colorscheme base16-black-metal-gorgoroth  ]]
 end
 
 
@@ -73,6 +73,7 @@ local colorHybrid = function()
   vim.api.nvim_set_hl(0, "@markup.raw.block", { fg = nil })
 end
 
-colorHybrid()
--- colorBase16()
+-- colorGruvbox()
+-- colorHybrid()
+colorBase16()
 highlight()
