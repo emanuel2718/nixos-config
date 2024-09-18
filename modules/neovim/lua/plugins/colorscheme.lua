@@ -19,6 +19,11 @@ local colorBase16 = function()
   -- vim.cmd [[ colorscheme base16-black-metal-gorgoroth  ]]
 end
 
+local colorMonokai = function()
+  require('monokai').setup{ italics = false }
+  vim.cmd [[ colorscheme monokai ]]
+end
+
 
 local highlight = function()
   -- blue highlight in cmp menu
@@ -75,5 +80,6 @@ end
 
 -- colorGruvbox()
 -- colorHybrid()
-colorBase16()
+-- colorBase16()
+colorMonokai()
 highlight()

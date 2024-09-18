@@ -17,8 +17,8 @@
       };
       keyboard = {
         bindings = [
-          { key = "C"; mods = "Super"; action = "Copy"; }
-          { key = "V"; mods = "Super"; action = "Paste"; }
+          { key = "c"; mods = "Super"; action = "Copy"; }
+          { key = "v"; mods = "Super"; action = "Paste"; }
           { key = "="; mods = "Super"; action = "IncreaseFontSize"; }
           { key = "-"; mods = "Super"; action = "DecreaseFontSize"; }
           { key = "0"; mods = "Super"; action = "ResetFontSize"; }

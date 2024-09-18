@@ -22,8 +22,13 @@
       set-option -g renumber-window on
       setw -g mode-keys vi
 
+      # Kinesis
       set -g prefix C-s
       bind C-s send-prefix
+
+      # Normal keyboars
+      # set -g prefix C-a
+      # bind C-a send-prefix
 
       bind-key o kill-pane
       bind-key u previous-window

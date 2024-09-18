@@ -12,12 +12,15 @@ let
       };
     };
 
-  gitCloneIt = with pkgs; {
+  gitCloneIt = {
     hybrid = {
       plugin = gitClone "HoNamDuong/hybrid.nvim" "master" "8838621a2e299582a0af5b8b96d5515f27b5d058";
     };
     cmp = {
       plugin = gitClone "hrsh7th/nvim-cmp" "main" "ae644feb7b67bf1ce4260c231d1d4300b19c6f30";
+    };
+    monokai = {
+      plugin = gitClone "tanvirtin/monokai.nvim" "master" "b8bd44d5796503173627d7a1fc51f77ec3a08a63";
     };
   };
 
@@ -46,6 +49,7 @@ in
       vimPlugins.base16-nvim
       vimPlugins.gruvbox-community
       gitCloneIt.hybrid
+      gitCloneIt.monokai
 
       # Neotree
       # vimPlugins.nvim-web-devicons

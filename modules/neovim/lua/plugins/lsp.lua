@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
 		vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>")
 		vim.keymap.set("n", "<leader>lf", function()
-			require("conform").format({ bufnr = bufnr, lsp_fallback = true, quiet = false })
+			require("conform").format({ lsp_fallback = true, quiet = false })
 		end)
 
 		vim.keymap.set("n", "<leader>dd", function()
@@ -113,10 +113,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		rust = { "rust_analyzer" },
+		rust = { "rustfmt" },
 		python = { "isort", "black" },
-		typescript = { { "prettier" } },
-		javascript = { { "prettier" } },
+		typescript = { { "prettierd", "prettier", stop_after_first = true } },
+		javascript = { { "prettierd", "prettier", stop_after_first = true } },
 		vue = { { "prettier" } },
 		nix = { "nixfmt" },
 	},

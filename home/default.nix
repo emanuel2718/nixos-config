@@ -53,6 +53,7 @@
       libreoffice
       xfce.thunar
       zed-editor
+      obsidian
       xcolor
       kdePackages.kcolorchooser
       vscode

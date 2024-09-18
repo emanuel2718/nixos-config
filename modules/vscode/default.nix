@@ -11,6 +11,7 @@
       bbenoist.nix
       ms-python.python
       ms-pyright.pyright
+      rust-lang.rust-analyzer
 
       # formatters/linters
       ms-python.isort
