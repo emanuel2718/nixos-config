@@ -20,8 +20,3 @@ cd $HOME/git/dotfiles
 sudo nixos-rebuild switch --flake .#<MACHINE>
 sudo reboot now
 ```
-
-
-## TODO
-- [x] add tmux sessionizer
-- [ ] fully port Nvim config to nix (currently 50/50 lua/nix)
