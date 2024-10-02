@@ -32,9 +32,21 @@
   # services.xserver.desktopManager.gnome.enable = true;
 
   # Enable KDE Plasma
-  services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+
+  # Enable Xfce
+  services.xserver = {
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+  };
+  services.displayManager.defaultSession = "xfce";
+
+
+
 
   # Enable i3
   # Uncomment the i3 import on the `imports`
