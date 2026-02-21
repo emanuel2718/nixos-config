@@ -1,0 +1,19 @@
+confirm_os_window_close 0
+enable_audio_bell no
+# font_family      family="TX-02"
+# font_family      family="Terminus (TTF)"
+font_family      family="Terminess Nerd Font Mono"
+
+font_size 16
+
+disable_ligatures always
+
+copy_on_select clipboard
+scrollback_lines 10000
+
+map cmd+v paste_from_clipboard
+map cmd+c copy_from_clipboard
+
+map super+equal change_font_size all +2.0
+map super+minus change_font_size all -2.0
+map super+0 change_font_size all 0
