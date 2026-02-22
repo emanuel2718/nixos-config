@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "runtime.version": "LuaJIT",
+  "diagnostics": {
+    "enable": true,
+    "globals": [
+      "vim",
+      "describe",
+      "pending",
+      "Snacks",
+      "it",
+      "before_each",
+      "after_each"
+    ],
+    "neededFileStatus": {
+      "codestyle-check": "Any"
+    }
+  },
+  "format": {
+    "defaultConfig": {
+      "indent_style": "space",
+      "indent_size": "2"
+    }
+  },
+  "workspace": {
+    "library": [
+      "lua",
+      "$VIMRUNTIME/lua",
+      "${3rd}/luv/library",
+      "$XDG_DATA_HOME/nvim/lazy/mini.nvim/lua"
+    ],
+    "checkThirdParty": false,
+    "maxPreload": 2000,
+    "preloadFileSize": 1000
+  },
+  "type": {
+    "weakNilCheck": true,
+    "weakUnionCheck": true,
+    "castNumberToInteger": true
+  },
+  "telemetry.enable": false
+}

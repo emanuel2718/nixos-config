@@ -74,6 +74,12 @@ in {
     pkgs.codex
 
     pkgs.nodejs
+    pkgs.stylua
+    pkgs.ruff
+    pkgs.biome
+    pkgs.prettierd
+    pkgs.nixpkgs-fmt
+    pkgs.zoxide
   ] ++ (lib.optionals isDarwin [
     pkgs.gettext
   ]) ++ (lib.optionals (isLinux && !isWSL) [
@@ -112,6 +118,7 @@ in {
   xdg.configFile = {
     "i3/config".text = builtins.readFile ./i3;
     "i3status/config".text = builtins.readFile ./i3status;
+    "nvim".source = ./nvim;
   } // (if isDarwin then {
     # "rectangle/RectangleConfig.json".text = builtins.readFile ./RectangleConfig.json;
   } else {}) // (if isLinux then {
