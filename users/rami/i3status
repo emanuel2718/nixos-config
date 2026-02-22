@@ -5,7 +5,6 @@ general {
 
 order += "volume master"
 order += "cpu_usage"
-order += "disk /"
 order += "memory"
 order += "battery all"
 order += "wireless _first_"
@@ -22,18 +21,8 @@ volume master {
 
 
 cpu_usage {
-        format= "CPU %usage"
-        max_threshold= 75
-}
-
-wireless _first_ {
-        format_up = "W:%quality at %essid, %bitrate"
-        format_down = ""
-}
-
-ethernet _first_ {
-        format_up = "E:(%speed)"
-        format_down = ""
+        format = "CPU %usage"
+        degraded_threshold = 75
 }
 
 battery all {
@@ -43,24 +32,24 @@ battery all {
         status_bat = "BAT"
         status_unk = "UNK"
         status_full = "FULL"
-        path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
+}
+
+wireless _first_ {
+        format_up = "W:%quality"
+        format_down = ""
+}
+
+ethernet _first_ {
+        format_up = "E:(%speed)"
+        format_down = ""
 }
 
 tztime local {
         format = "%Y-%m-%d %-I:%M%p"
 }
 
-load {
-        format = "%1min %5min %15min"
-}
-
 memory {
         format = "MEM %percentage_used"
-        threshold_degraded = "10%"
-        format_degraded = "MEMORY: %free"
-}
-
-disk "/" {
-        format = "HDD %percentage_used"
+        threshold_degraded = 10
 }

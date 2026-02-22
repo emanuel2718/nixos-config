@@ -1,0 +1,18 @@
+window-decoration = server
+
+app-notifications = false
+desktop-notifications = false
+
+auto-update-channel = tip
+confirm-close-surface = false
+copy-on-select = clipboard
+font-family = Terminus (TTF)
+font-size = 12
+# theme= xterm
+theme= Wez
+
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = super+equal=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+keybind = super+0=reset_font_size

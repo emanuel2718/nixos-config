@@ -18,16 +18,17 @@ let
   } // (if isLinux then {
     pbcopy = "xclip";
     pbpaste = "xclip -o";
-  } else {});
+  } else { });
 
   # For our MANPAGER env var
   # https://github.com/sharkdp/bat/issues/1145
   manpager = (pkgs.writeShellScriptBin "manpager" (if isDarwin then ''
     sh -c 'col -bx | bat -l man -p'
-    '' else ''
+  '' else ''
     cat "$1" | col -bx | bat --language man --style plain
   ''));
-in {
+in
+{
   # Home-manager 22.11 requires this be set. We never set it so we have
   # to use the old state version.
   home.stateVersion = "18.09";
@@ -109,7 +110,7 @@ in {
   } // (if isDarwin then {
     # See: https://github.com/NixOS/nixpkgs/issues/390751
     DISPLAY = "nixpkgs-390751";
-  } else {});
+  } else { });
 
   home.file = {
     ".inputrc".source = ./inputrc;
@@ -119,11 +120,12 @@ in {
     "i3/config".text = builtins.readFile ./i3;
     "i3status/config".text = builtins.readFile ./i3status;
     "nvim".source = ./nvim;
+    "ghostty/config".text = builtins.readFile ./ghostty;
   } // (if isDarwin then {
     # "rectangle/RectangleConfig.json".text = builtins.readFile ./RectangleConfig.json;
-  } else {}) // (if isLinux then {
+  } else { }) // (if isLinux then {
     # "ghostty/config".text = builtins.readFile ./ghostty.linux;
-  } else {});
+  } else { });
 
   #---------------------------------------------------------------------
   # Programs
@@ -133,13 +135,13 @@ in {
 
   programs.bash = {
     enable = true;
-    shellOptions = [];
+    shellOptions = [ ];
     historyControl = [ "ignoredups" "ignorespace" ];
     initExtra = builtins.readFile ./bashrc;
     shellAliases = shellAliases;
   };
 
-  programs.direnv= {
+  programs.direnv = {
     enable = true;
   };
 
@@ -154,10 +156,11 @@ in {
       "set -g SHELL ${pkgs.fish}/bin/fish"
     ]));
 
-    plugins = map (n: {
-      name = n;
-      src  = inputs.${n};
-    }) [
+    plugins = map
+      (n: {
+        name = n;
+        src = inputs.${n};
+      }) [
       "fish-fzf"
       # "fish-foreign-env"
       # "theme-bobthefish"
@@ -210,22 +213,24 @@ in {
     extraConfig = builtins.readFile ./kitty;
   };
 
-  programs.i3status = {
-    enable = isLinux && !isWSL;
-
-    general = {
-      colors = true;
-      color_good = "#8C9440";
-      color_bad = "#A54242";
-      color_degraded = "#DE935F";
-    };
-
-    modules = {
-      ipv6.enable = false;
-      "wireless _first_".enable = false;
-      "battery all".enable = false;
-    };
+  programs.ghostty = {
+    enable = true;
   };
+
+  # programs.i3status = {
+  #   enable = isLinux && !isWSL;
+  # 
+  #   general = {
+  #     colors = true;
+  #     color_good = "#8C9440";
+  #     color_bad = "#A54242";
+  #     color_degraded = "#DE935F";
+  #   };
+  # 
+  #   modules = {
+  #     ipv6.enable = false;
+  #   };
+  # };
 
   programs.neovim = {
     enable = true;

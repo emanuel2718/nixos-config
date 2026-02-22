@@ -85,11 +85,11 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "clangd",
+        -- "clangd",
         "zls",
-        "basedpyright",
+        -- "basedpyright",
         "lua_ls",
-        "ruff",
+        -- "ruff",
         "rust_analyzer",
         "cssls",
         "emmet_language_server",
@@ -99,7 +99,7 @@ return {
         "tailwindcss",
         "vue_ls",
         "vtsls",
-        "stylua",
+        -- "stylua",
         "biome",
       },
       automatic_enable = true,
