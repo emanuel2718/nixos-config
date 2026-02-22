@@ -84,17 +84,8 @@
     gtkmm3
   ];
 
-  # Our default non-specialised desktop environment.
-  services.xserver = lib.mkIf (config.specialisation != {}) {
-    enable = true;
-    xkb.layout = "us";
-  };
-  services.desktopManager = lib.mkIf (config.specialisation != {}) {
-    gnome.enable = true;
-  };
-  services.displayManager = lib.mkIf (config.specialisation != {}) {
-    gdm.enable = true;
-  };
+  # i3 is the default desktop/session. Plasma remains available as a
+  # specialisation from modules/mods/plasma.nix.
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
